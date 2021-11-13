@@ -1,7 +1,7 @@
 export const allProjects = [
     {
         id: 1,
-        title: "Project One",
+        title: "Car 1",
         description: "The first project.",
         goal: 150,
         image: "https://images3.alphacoders.com/115/115387.jpg",

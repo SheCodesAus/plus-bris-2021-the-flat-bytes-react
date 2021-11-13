@@ -6,7 +6,7 @@ function CarCard(props) {
   const { projectData } = props;
   return (
     <div className="car-card">
-      <Link to="/project">
+      <Link to="/car-detail">
         <img src={projectData.image} />
         <h3>{projectData.title}</h3>
       </Link>
