@@ -1,7 +1,15 @@
-// import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import allProjects from "../data";
+import CarCard from "../components/CarCard/CarCard";
 
-// function HomePage() {
-//   return <h1>This is the home page.</h1>;
-// }
+function HomePage() {
+  return (
+    <div id="car-list">
+      {allProjects.map((projectData, key) => {
+        return <CarCard key={key} projectData={projectData} />;
+      })}
+    </div>
+  );
+}
 
-// export default HomePage;
+export default HomePage;
