@@ -1,6 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@500&display=swap");
+
 #car-list {
   display: grid;
   grid-template-columns: 30% 30% 30%;
   column-gap: 10px;
   row-gap: 10px;
+}
+
+div {
+  color: white;
+}
+
+Link {
+  text-decoration: none;
+}
+
+.luxe {
+  font-family: "Montserrat", sans-serif;
+  border: solid white;
+  border-radius: 3mm;
+  color: white;
+  background-color: black;
+  display: inline-block;
+  padding: 1% 2% 1% 2%;
+  margin: 1%;
+}
+
+#welcome {
+  display: block;
+  margin: 1%;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  size: 0.8cm;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+}
+
+button {
+  color: white;
+  border: solid white;
+  background-color: black;
+  border-radius: 3mm;
+  padding: 1% 2% 1% 2%;
+}
+
+.container {
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#background {
+  background: #000000;
+  background: -webkit-linear-gradient(left, #000000, #5d5d60);
+  background: -moz-linear-gradient(left, #000000, #5d5d60);
+  background: linear-gradient(to right, #000000, #5d5d60);
+  height: 2000px;
 }
