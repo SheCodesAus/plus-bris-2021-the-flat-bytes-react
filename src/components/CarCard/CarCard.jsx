@@ -1,15 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./CarCard.css";
 
 function CarCard(props) {
-  const { projectData } = props;
+  const { ...suggestedCar } = props;
   return (
     <div className="car-card">
-      <Link to="/car-detail">
-        <img src={projectData.image} />
-        <h3>{projectData.title}</h3>
-      </Link>
+      <img alt="projectData" src={suggestedCar.image} />
+      <h3>This your best choice carcard</h3>
+      <h3>Car make: {suggestedCar.make}</h3>
+      <h3>Car model: {suggestedCar.model}</h3>
+      <h3>Car price: $ {suggestedCar.price}</h3>
+      <h3>Car price: {suggestedCar.colour}</h3>
+      <h3>See more car details here: {suggestedCar.url}</h3>
     </div>
   );
 }
