@@ -5,7 +5,7 @@ function CarCard(props) {
   const { ...suggestedCar } = props;
   return (
     <div className="car-card">
-      <img alt="projectData" src={suggestedCar.image} />
+      <img alt="" src={suggestedCar.image} />
       <h3>This your best choice carcard</h3>
       <h3>Car make: {suggestedCar.make}</h3>
       <h3>Car model: {suggestedCar.model}</h3>
