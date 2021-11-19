@@ -7,11 +7,15 @@
   row-gap: 10px;
 }
 
-Link {
-  text-decoration: none;
+.form {
+  color: #ffffff;
 }
 
-/* .luxe {
+/* Link {
+  text-decoration: none;
+} */
+/* 
+.luxe {
   font-family: "Montserrat", sans-serif;
   border: solid white;
   border-radius: 3mm;
