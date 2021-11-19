@@ -51,6 +51,7 @@ p {
 
 button {
   background-color: transparent;
+  color: #ffffff;
   border: .5px solid #ffffff;
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
@@ -60,8 +61,6 @@ button {
 }
 
 a {
-  width: fit-content;
-  height: fit-content;
   text-decoration: none;
 }
 

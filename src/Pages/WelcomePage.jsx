@@ -1,7 +1,11 @@
 import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function WelcomePage() {
+  const navigate = useNavigate();
+  const redirectToLogin = () => {
+    navigate('/login')
+  }
   return (
     <div>
       <div id="img-div">
@@ -12,10 +16,8 @@ function WelcomePage() {
         <p>Let us help you with your next purchase</p>
       </div>
       <div class="login" style={{ textDecoration: "none" }}>
-        <button>
-          <Link to="/login">ENTER</Link>
+        <button onClick={redirectToLogin}>ENTER</button>
           {/* Not sure how to remove underline from link */}
-        </button>
       </div>
     </div>
   );
