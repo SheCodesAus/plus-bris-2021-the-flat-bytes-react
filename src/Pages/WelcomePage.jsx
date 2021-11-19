@@ -13,7 +13,7 @@ function WelcomePage() {
       </div>
       <div class="login" style={{ textDecoration: "none" }}>
         <button>
-          <Link to="/login">LOGIN</Link>
+          <Link to="/login">ENTER</Link>
           {/* Not sure how to remove underline from link */}
         </button>
       </div>
