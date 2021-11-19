@@ -19,25 +19,15 @@ function Form() {
   const [bodyTypeQuestion, setBodyTypeQuestion] = useState("");
   const [fuelQuestion, setFuelQuestion] = useState("");
 
-  const questions = [
-    "What color do you prefer?",
-    "How much money are you willing to spend?",
-    "In what body type do you feel most comfortable?",
-    "Do you care about environmet?",
-    "How are you feeling today?",
-  ];
-
-  const colourOptions = ["black", "white", "blue", "gray"];
-
   const carsOptions = [
     {
       make: "Ferrari",
       model: "GTC4Lusso",
-      price: 578.0,
+      price: 575.0,
       engine: "6.3-litre V12",
-      body_type: "Coupe",
+      body_type: "coupe",
       fuel: "electric",
-      colour: "White",
+      colour: "white",
       url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
       image:
         "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
@@ -46,11 +36,11 @@ function Form() {
     {
       make: "Bentley",
       model: "Mulsanne Speed",
-      price: 569.5,
+      price: 455.5,
       engine: "6.8-litre Twin Turbo V8",
       body_type: "sedan",
-      fuel: "petrol",
-      colour: "Black",
+      fuel: "electric",
+      colour: "black",
       url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
       image:
         "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
@@ -58,36 +48,30 @@ function Form() {
     {
       make: "Rolls-Royce",
       model: "Ghost",
-      price: 595.0,
+      price:755.0,
       engine: "6.7-litre V12",
       colour: "blue",
-      body_type: "Sedan",
+      body_type: "sedan",
       url: "https://livecarmodel.com/products/1-8-2010-rolls-royce-ghost-diamond-black-resin-car-model.html",
       image:
         "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
-      fuel: "Petrol",
+      fuel: "petrol",
     },
     {
       make: "Porsche",
       model: "911 GT2 RS",
       price: 645.4,
       engine: "3.8 -litre twin-turbocharged flat-6",
-      "body type": "coupe",
+      "body_type": "coupe",
       fuel: "petrol",
-      colour: "Gray",
+      colour: "gray",
       url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
       image:
         "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
     },
   ];
 
-  //grab values from the form
-  const handleChange = (e) => {
-    // const arrayOfAnswers = [];
-    // arrayOfAnswers.push(e.target)
-    // console.log("This is array of answers", arrayOfAnswers)
-    // setUserResponse(arrayOfAnswers)
-  };
+  //show a recommendation based on the mood
 
   const handleMoodQuestion = (e) => {
     const answersMood = ["happy", "sad", "tired", "cheerful"];
@@ -131,8 +115,8 @@ function Form() {
 
   //function to loop through the hardcoded array of cars objects and get recommendation based on user input
   //should be async/await
-
-  const filterCars = (e) => {
+// get user preferences from the form
+  const getUserPreferences = (e) => {
     const { id, value } = e.target;
     setSuggestedCar((prevSuggestedCar) => ({
       ...prevSuggestedCar,
@@ -141,81 +125,155 @@ function Form() {
     console.log("I'm looking for suggestedCar", suggestedCar);
   };
 
-  const matchingCar = (e) => { carsOptions.filter((car) => {
-    if (car.colour === suggestedCar.colour) {
-      console.log("We found a match", car);
-      return true;
-    }
-    return false;
-  });
+  //filter based on attributes
+
+
+  const matchingCars= (e) => { 
+
+    let filteredCarsByPrice = matchingPrice(carsOptions);
+    console.log("filteredCarsByPrice ---------", filteredCarsByPrice)
+      
+    if(filteredCarsByPrice.length === 1)
+        return filteredCarsByPrice;
+
+    if(filteredCarsByPrice.length === 0)
+      {var filteredCarsByColors = matchingColor(carsOptions);}
+    else  
+     { var filteredCarsByColors = matchingColor(filteredCarsByPrice);}
+    
+    console.log("filteredCarsByColors ---------", filteredCarsByColors)
+      
+    if(filteredCarsByColors.length === 1)
+        return filteredCarsByColors;
+
+        if(filteredCarsByColors.length === 0)
+        {var filteredCarsByBodyType = matchingBodyType(filteredCarsByPrice);}
+      else  
+       { var filteredCarsByBodyType = matchingBodyType(filteredCarsByColors);}
+      
+      
+    console.log("filteredCarsByBodyType ---------", filteredCarsByBodyType)
+      
+    if(filteredCarsByBodyType.length === 1)
+        return filteredCarsByBodyType;
 }
+
+
+  function matchingColor(cars){
+    return cars.filter((car) => {
+      if (car.colour !== suggestedCar.colour) {
+      
+          console.log("We found a color match ---------", car)
+          
+          return false;
+        }
+        return true;
+      })
+    }
+    
+    function matchingPrice(cars){
+      let minPrice = 0;
+      let maxPrice = 0;
+         
+      switch(suggestedCar.price )
+      {
+        case "400.0-540.0":
+          minPrice = 400
+          maxPrice = 540
+          break;
+       case "541.0-650.0":
+              minPrice = 541
+              maxPrice = 650
+              break
+       case "651.0-790.0":
+              minPrice = 651
+              maxPrice = 790
+            break;
+        default:
+          minPrice = 400;
+          maxPrice = 540;
+            break;
+      }
+      return cars.filter((car) => {
+        if (car.price > minPrice && car.price < maxPrice) {
+        
+            console.log("We found a price match ---------", car)
+            
+            return false;
+          }
+          return true;
+        })
+      } 
+    
+    function matchingBodyType(cars){
+        return cars.filter((car) => {
+          if (car.body_type !== suggestedCar.body_type) {
+          
+              console.log("We found a body type match ---------", car)
+              
+              return false;
+            }
+            return true;
+          })
+        }
+      
+
+  // const matchingBody = (e) => {
+  //   return filteredCars.filter((car) => {
+  //     if (car.body_type == suggestedCar.body_type) {
+        
+  //     } 
+  //   })
+  // }
+ 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("We found a match", car);
-    matchingCar().then((response) => {
-      console.log("We gotcha-------------", response);
-      console.log("We found a match", car);
-    });
+    var result = matchingCars(e);
+      console.log("We gotcha-------------", result);
+      return result;
   }
 
-  // if (e.target.id === "colour") {
-  //   console.log("I start filtering", e.target.id);
-  // }
-  //   console.log("I'm looking for new suggestedCar", suggestedCar)
-  //   console.log("I'm looking for suggestedCar", setSuggestedCar)
-  //   carsOptions.filter(car =>
-  //     car.colour.includes('colour')).map(filteredCar =>
-  //       console.log("The filtered car is----------", filteredCar))
-  // }
-  // if (e.target.id === "price") {
-  //   console.log("I start filtering", e.target.id)
-  //   setSuggestedCar({
-  //     ...suggestedCar,
-  //     [e.target.id]: e.target.value
-  //   })
-  //   console.log("I'm looking for suggestedCar", suggestedCar)
-  //   console.log("I'm looking for suggestedCar", setSuggestedCar)
-  // }
-  //}
-  //}
   return (
-    <div className="car_form">
-      <form>
-        <div>
+    <div>
+      <form  className="form" onSubmit={handleSubmit}>
+        <div >
           <label>What color do you prefer?</label>
           <select
-            onChange={(e) => setColourQuestion(e.target)}
-            onClick={filterCars}
+            //onChange={(e) => setColourQuestion(e.target)}
+            onChange={getUserPreferences}
             id="colour"
             name="colour"
           >
-            <option value="black">Black</option>
-            <option value="white">White</option>
-            <option value="blue">Blue</option>
-            <option value="red">Gray</option>
+            <option disabled selected value=""></option>
+            <option value="black">black</option>
+            <option value="white">white</option>
+            <option value="blue">blue</option>
+            <option value="red">gray</option>
           </select>
         </div>
         <div>
           <label>How much money are you willing to spend?</label>
           <select
-            onChange={(e) => setPriceQuestion(e.target.value)}
-            onClick={filterCars}
+            //onChange={(e) => setPriceQuestion(e.target.value)}
+            onChange={getUserPreferences}
             id="price"
             name="price"
           >
-            <option value="$400.000-570.000">$400.000-570.000</option>
-            <option value="$570.000-580.000">$570.000-580.000</option>
-            <option value="$580.000-590.000">$580.000-590.000</option>
+            <option disabled selected value=""></option>
+            <option value="400.0-540.0">$400.000-540.000</option>
+            <option value="541.0-650.0">$541.000-650.000</option>
+            <option value="651.0-790.0">$651.000-790.000</option>
           </select>
         </div>
         <div>
           <label>In what body type do you feel most comfortable?</label>
           <select
-            onChange={(e) => setBodyTypeQuestion(e.target.value)}
-            onClick={filterCars}
+            //onChange={(e) => setBodyTypeQuestion(e.target.value)}
+            onChange={getUserPreferences}
             id="body_type"
             name="body_type"
           >
+            <option disabled selected value=""></option>
             <option value="coupe">Coupe</option>
             <option value="sedan">Sedan</option>
             <option value="convertible">Convertible</option>
@@ -226,13 +284,15 @@ function Form() {
         <div>
           <label>Do you love nature?</label>
           <select
-            onChange={(e) => setFuelQuestion(e.target.value)}
-            onClick={matchingCar}
+            //onChange={(e) => setFuelQuestion(e.target.value)}
+            //onClick={matchingCar}
+            onChange={getUserPreferences}
             id="fuel"
             name="fuel"
           >
-            <option value="petrol">Not really</option>
+            <option disabled selected value=""></option>
             <option value="electric">Yes, of course</option>
+            <option value="petrol">Not really</option>
           </select>
         </div>
 
@@ -245,29 +305,25 @@ function Form() {
             id="mood"
             name="mood"
           >
-            <option value="happy">I'm on top of the things</option>
-            <option value="sad">It could be better</option>
-            <option value="tired">I am tried and not in the mood today</option>
-            <option value="cheerful">I am smiling and happy today!</option>
+            <option disabled selected value=""></option>
+            <option onClick={handleMoodQuestion} value="happy">I'm on top of the things</option>
+            <option onClick={handleMoodQuestion} value="sad">It could be better</option>
+            <option onClick={handleMoodQuestion} value="tired">I am tried and not in the mood today</option>
+            <option onClick={handleMoodQuestion} value="cheerful">I am smiling and happy today!</option>
           </select>
         </div>
         <div>
-          <button onSubmit={handleSubmit} type="submit">
+          <button  type="submit">
             Help me choose
           </button>
         </div>
       </form>
-
+      {mood && 
+      <div>
       <h2>Our AI has defined that the best match for you</h2>
       <CarCard {...suggestedCar} />
-      {/* <div>
-        <h3>Filtered cars:</h3>
-        {carsOptions
-          .filter((car) => car.colour === "gray")
-          .map((filteredCar) => (
-            <li>{filteredCar.make}</li>
-          ))}
-      </div> */}
+      </div>
+    }
     </div>
   );
 }
