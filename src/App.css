@@ -7,14 +7,14 @@
   row-gap: 10px;
 }
 
-div {
-  color: white;
+.form {
+  color: #ffffff;
 }
 
-Link {
+/* Link {
   text-decoration: none;
-}
-
+} */
+/* 
 .luxe {
   font-family: "Montserrat", sans-serif;
   border: solid white;
@@ -24,14 +24,27 @@ Link {
   display: inline-block;
   padding: 1% 2% 1% 2%;
   margin: 1%;
-}
+} */
 
 #welcome {
   display: block;
-  margin: 1%;
+  margin: auto;
+  margin-top: 10%;
   color: white;
-  font-family: "Open Sans", sans-serif;
+  font-weight: 200;
+  font-family: 'Montserrat', sans-serif;
   size: 0.8cm;
+}
+
+p {
+  text-align: center;
+}
+
+#img-div {
+  display: flex;
+  justify-content: center;
+  margin:auto;
+  margin-top: 10%;
 }
 
 .login {
@@ -41,11 +54,22 @@ Link {
 }
 
 button {
-  color: white;
-  border: solid white;
-  background-color: black;
-  border-radius: 3mm;
-  padding: 1% 2% 1% 2%;
+  background-color: transparent;
+  color: #ffffff;
+  border: .5px solid #ffffff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 200;
+  font-size: 1em;
+  margin-top: 15%;
+  padding: 3%;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: #ffffff;
 }
 
 .container {
@@ -53,12 +77,4 @@ button {
   display: flex;
   align-items: center;
   flex-direction: column;
-}
-
-#background {
-  background: #000000;
-  background: -webkit-linear-gradient(left, #000000, #5d5d60);
-  background: -moz-linear-gradient(left, #000000, #5d5d60);
-  background: linear-gradient(to right, #000000, #5d5d60);
-  height: 2000px;
 }
