@@ -13,19 +13,7 @@ function Form() {
 
   //variables to handle "ai model" response
   const [mood, setMood] = useState("");
-  const [bestMatchCar, setBestMatchCar] = useState([{
-    make:"",
-    model:"",
-    colour:"",
-    price:"",
-    engine:"",
-    body_type: "",
-    fuel: "",
-    image:"",
-    url:""
-  }]);
-  
-
+  const [bestCarMatches, setbestCarMatches] = useState([]);
 
   const carsOptions = [
     {
@@ -129,28 +117,28 @@ function Form() {
       ...prevSuggestedCar,
       [id]: value,
     }));
-    console.log("I'm looking for suggestedCar", suggestedCar);
+    // console.log("I'm looking for suggestedCar", suggestedCar);
   };
 
   //filter based on attributes
   const matchingCars = (e) => {
     //filter by price
     let filteredCars = matchingPrice(carsOptions);
-    console.log("filteredCarsByPrice ---------", filteredCars);
+    // console.log("filteredCarsByPrice ---------", filteredCars);
 
     if (suggestedCar.colour.length >0) {
       filteredCars = matchingColor(filteredCars);
-      console.log("filteredCarsByColors ---------", filteredCars);
+      // console.log("filteredCarsByColors ---------", filteredCars);
     }
 
     if (suggestedCar.body_type.length >0) {
       filteredCars = matchingBodyType(filteredCars);
-      console.log("filteredCarsByBodyType ---------", filteredCars);
+      // console.log("filteredCarsByBodyType ---------", filteredCars);
     }
 
     if (suggestedCar.colour.length >0) {
       filteredCars = matchingFuel(filteredCars);
-      console.log("filteredCarsByColors ---------", filteredCars);
+      // console.log("filteredCarsByColors ---------", filteredCars);
     }
 
       return filteredCars;
@@ -164,7 +152,7 @@ function Form() {
         
         return false;
       }
-      console.log("We found a color match ---------", car);
+      // console.log("We found a color match ---------", car);
       return true;
     });
   }
@@ -193,7 +181,7 @@ function Form() {
     }
     return cars.filter((car) => {
       if (car.price > minPrice && car.price < maxPrice) {
-        console.log("We found a price match ---------", car);
+        // console.log("We found a price match ---------", car);
         return true;
       }
   
@@ -207,7 +195,7 @@ function Form() {
         
         return false;
       }
-      console.log("We found a body type match ---------", car);
+      // console.log("We found a body type match ---------", car);
       return true;
     });
   }
@@ -218,7 +206,7 @@ function Form() {
         
         return false;
       }
-      console.log("We found a fuel match ---------", car);
+      // console.log("We found a fuel match ---------", car);
       return true;
     });
   }
@@ -226,11 +214,12 @@ function Form() {
   //submit the form
   function handleSubmit(e) {
     e.preventDefault();
-    var result = matchingCars(e);
-    console.log("We gotcha-------------", result);
-    setBestMatchCar(result)
+    const result = matchingCars(e);
+    setbestCarMatches(result)
     return result;
   }
+
+  console.log('best match car:', bestCarMatches)
 
   return (
     <div>
@@ -324,23 +313,22 @@ function Form() {
           <button type="submit">Help me choose</button>
         </div>
       </form>
-      {mood && (
-        <div>
-          <h2>Our AI has defined that the best match for you</h2>
-          <CarCard {...suggestedCar} />
-        </div>
+      <h1 style={{ color: 'white' }}>Best Car Matches:</h1>
+      {!bestCarMatches.length && (
+        <p style={{ color: 'white' }}>No car matches found.</p>
       )}
-
-      {bestMatchCar.map((car) => {
+      {bestCarMatches.length > 0 && bestCarMatches.map((car) => {
         return (
-          <div><CarCard {...bestMatchCar} /></div>
+          <CarCard
+            image={car.image}
+            make={car.make}
+            model={car.model}
+            price={car.price}
+            colour={car.color}
+            url={car.url}
+          />
         )
-      }) && <div>
-        <h2>We have found the matching car</h2>
-        <CarCard {...bestMatchCar} />
-      </div>
-
-      }
+      })}
     </div>
   );
 }
