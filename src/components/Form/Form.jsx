@@ -16,7 +16,6 @@ function Form() {
   const [carsFromAPI, setCarsFromApi] = useState([]);
   const [carsOptions, setCarsOptions] = useState([]);
 
-
   // const carsOptions = [
   //   {
   //     make: "Ferrari",
@@ -111,7 +110,6 @@ function Form() {
     }
   };
 
-
   // get user preferences from the form
   const getUserPreferences = (e) => {
     const { id, value } = e.target;
@@ -119,50 +117,47 @@ function Form() {
       ...prevSuggestedCar,
       [id]: value,
     }));
-    
   };
 
   //call api to get matching cars
-useEffect (() => {
-  fetch(`${process.env.REACT_APP_API_URL}products/`)
-  .then((results) => {
-    console.log("results:", results);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}products/`)
+      .then((results) => {
+        console.log("results:", results);
 
-    return results.json();
-  })
-  .then((data) => {
-    console.log("data:", data);
-    setCarsOptions(data);
-  });
-
-}, [])
-
+        return results.json();
+      })
+      .then((data) => {
+        console.log("data:", data);
+        setCarsOptions(data);
+      });
+  }, []);
 
   //filter based on attributes
   const matchingCars = (e) => {
     //filter by price
     //pass my response from api
     let filteredCars = matchingPrice(carsOptions);
-    console.log("the suggested cARS", suggestedCar)
+    console.log("the suggested cARS", suggestedCar);
 
     if (suggestedCar.colour !== "") {
       filteredCars = matchingColor(filteredCars);
-      
-      console.log("By color", filteredCars)
+
+      console.log("By color", filteredCars);
     }
 
     if (suggestedCar.body_type !== "") {
       filteredCars = matchingBodyType(filteredCars);
-      console.log("By body", filteredCars)
+      console.log("By body", filteredCars);
     }
 
     if (suggestedCar.fuel !== "") {
       filteredCars = matchingFuel(filteredCars);
-      console.log("By fuel", filteredCars)
+      console.log("By fuel", filteredCars);
     }
-      console.log("The filtered cars", filteredCars)
-      setBestCarMatches(filteredCars)
-      return filteredCars;
+    console.log("The filtered cars", filteredCars);
+    setBestCarMatches(filteredCars);
+    return filteredCars;
   };
 
   //functions to filter based on each attribute, they are called above
@@ -170,7 +165,6 @@ useEffect (() => {
   function matchingColor(cars) {
     return cars.filter((car) => {
       if (car.colour.toLowerCase() !== suggestedCar.colour.toLowerCase()) {
-        
         return false;
       }
       return true;
@@ -203,7 +197,7 @@ useEffect (() => {
       if (car.price > minPrice && car.price < maxPrice) {
         return true;
       }
-  
+
       return false;
     });
   }
@@ -211,7 +205,6 @@ useEffect (() => {
   function matchingBodyType(cars) {
     return cars.filter((car) => {
       if (car.body_type !== suggestedCar.body_type) {
-        
         return false;
       }
       return true;
@@ -221,7 +214,6 @@ useEffect (() => {
   function matchingFuel(cars) {
     return cars.filter((car) => {
       if (car.fuel !== suggestedCar.fuel) {
-        
         return false;
       }
       return true;
@@ -232,36 +224,30 @@ useEffect (() => {
   function handleSubmit(e) {
     e.preventDefault();
     const result = matchingCars(e);
-    
+
     //setbestCarMatches(result)
     return result;
   }
 
-  console.log('cars options', carsOptions)
+  console.log("cars options", carsOptions);
 
   return (
     <div>
-      <form className="form" onSubmit={handleSubmit}>
-      <div>
-          <label>How much money are you willing to spend?</label>
-          <select
-            onClick={getUserPreferences}
-            id="price"
-            name="price"
-          >
+      <form onSubmit={handleSubmit}>
+        <div class="container">
+          <label class="standard-text">
+            How much money are you willing to spend?
+          </label>
+          <select onClick={getUserPreferences} id="price" name="price">
             <option disabled selected value=""></option>
             <option value="400.0-540.0">$400.000-540.000</option>
             <option value="541.0-650.0">$541.000-650.000</option>
             <option value="651.0-790.0">$651.000-790.000</option>
           </select>
         </div>
-        <div>
-          <label>What color do you prefer?</label>
-          <select
-            onChange={getUserPreferences}
-            id="colour"
-            name="colour"
-          >
+        <div class="container">
+          <label class="standard-text">What color do you prefer?</label>
+          <select onChange={getUserPreferences} id="colour" name="colour">
             <option disabled selected value=""></option>
             <option value="black">black</option>
             <option value="white">white</option>
@@ -270,13 +256,11 @@ useEffect (() => {
           </select>
         </div>
 
-        <div>
-          <label>In what body type do you feel most comfortable?</label>
-          <select
-            onChange={getUserPreferences}
-            id="body_type"
-            name="body_type"
-          >
+        <div class="container">
+          <label class="standard-text">
+            In what body type do you feel most comfortable?
+          </label>
+          <select onChange={getUserPreferences} id="body_type" name="body_type">
             <option disabled selected value=""></option>
             <option value="coupe">Coupe</option>
             <option value="sedan">Sedan</option>
@@ -285,21 +269,17 @@ useEffect (() => {
           </select>
         </div>
 
-        <div>
-          <label>Do you love nature?</label>
-          <select
-            onChange={getUserPreferences}
-            id="fuel"
-            name="fuel"
-          >
+        <div class="container">
+          <label class="standard-text">Do you love nature?</label>
+          <select onChange={getUserPreferences} id="fuel" name="fuel">
             <option disabled selected value=""></option>
             <option value="electric">Yes, of course</option>
             <option value="petrol">Not really</option>
           </select>
         </div>
 
-        <div>
-          <label>How are you feeling today?</label>
+        <div class="container">
+          <label class="standard-text">How are you feeling today?</label>
           <select
             value={mood}
             onChange={(e) => setMood(e.target.value)}
@@ -323,37 +303,41 @@ useEffect (() => {
           </select>
         </div>
         <div>
-          <button type="submit">Help me choose</button>
+          <button class="container" type="submit">
+            Help me choose
+          </button>
         </div>
       </form>
-      <h1 style={{ color: 'white' }}>Best Car Matches:</h1>
+      <h1 class="standard-text">Best Car Matches:</h1>
       {!bestCarMatches.length && (
-        <p style={{ color: 'white' }}>No car matches found.</p>
+        <p class="standard-text">No car matches found.</p>
       )}
-      {bestCarMatches.length > 0 && bestCarMatches.map((car) => {
-        return (
-          <CarCard
-            image={car.image}
-            make={car.make}
-            model={car.model}
-            price={car.price}
-            colour={car.color}
-            url={car.url}
-          />
-        )
-      })}
+      {bestCarMatches.length > 0 &&
+        bestCarMatches.map((car) => {
+          return (
+            <CarCard
+              image={car.image}
+              make={car.make}
+              model={car.model}
+              price={car.price}
+              colour={car.color}
+              url={car.url}
+            />
+          );
+        })}
 
-       
-{mood && (
+      {mood && (
         <div>
-          <h2>Our AI has defined that the best match for you</h2>
+          <h2 class="standard-text">
+            Our AI has defined that the best match for you
+          </h2>
           <CarCard
-          image={suggestedCar.image}
-          make={suggestedCar.make}
-          model={suggestedCar.model}
-          price={suggestedCar.price}
-          colour={suggestedCar.colour}
-          url={suggestedCar.url}
+            image={suggestedCar.image}
+            make={suggestedCar.make}
+            model={suggestedCar.model}
+            price={suggestedCar.price}
+            colour={suggestedCar.colour}
+            url={suggestedCar.url}
           />
         </div>
       )}
