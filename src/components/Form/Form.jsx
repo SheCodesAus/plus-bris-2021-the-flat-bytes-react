@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 
 //components
 import CarCard from "../CarCard/CarCard.jsx";
@@ -12,59 +12,62 @@ function Form() {
   });
 
   const [mood, setMood] = useState("");
-  const [bestCarMatches, setbestCarMatches] = useState([]);
+  const [bestCarMatches, setBestCarMatches] = useState([]);
+  const [carsFromAPI, setCarsFromApi] = useState([]);
+  const [carsOptions, setCarsOptions] = useState([]);
 
-  const carsOptions = [
-    {
-      make: "Ferrari",
-      model: "GTC4Lusso",
-      price: 575.0,
-      engine: "6.3-litre V12",
-      body_type: "coupe",
-      fuel: "electric",
-      colour: "white",
-      url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
-      image:
-        "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
-    },
 
-    {
-      make: "Bentley",
-      model: "Mulsanne Speed",
-      price: 455.5,
-      engine: "6.8-litre Twin Turbo V8",
-      body_type: "sedan",
-      fuel: "electric",
-      colour: "white",
-      url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
-      image:
-        "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
-    },
-    {
-      make: "Rolls-Royce",
-      model: "Ghost",
-      price: 755.0,
-      engine: "6.7-litre V12",
-      colour: "gray",
-      body_type: "sedan",
-      url: "https://livecarmodel.com/products/1-8-2010-rolls-royce-ghost-diamond-black-resin-car-model.html",
-      image:
-        "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
-      fuel: "petrol",
-    },
-    {
-      make: "Porsche",
-      model: "911 GT2 RS",
-      price: 645.4,
-      engine: "3.8 -litre twin-turbocharged flat-6",
-      body_type: "coupe",
-      fuel: "petrol",
-      colour: "black",
-      url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
-      image:
-        "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
-    },
-  ];
+  // const carsOptions = [
+  //   {
+  //     make: "Ferrari",
+  //     model: "GTC4Lusso",
+  //     price: 575.0,
+  //     engine: "6.3-litre V12",
+  //     body_type: "coupe",
+  //     fuel: "electric",
+  //     colour: "white",
+  //     url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
+  //     image:
+  //       "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
+  //   },
+
+  //   {
+  //     make: "Bentley",
+  //     model: "Mulsanne Speed",
+  //     price: 455.5,
+  //     engine: "6.8-litre Twin Turbo V8",
+  //     body_type: "sedan",
+  //     fuel: "electric",
+  //     colour: "white",
+  //     url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
+  //     image:
+  //       "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
+  //   },
+  //   {
+  //     make: "Rolls-Royce",
+  //     model: "Ghost",
+  //     price: 755.0,
+  //     engine: "6.7-litre V12",
+  //     colour: "gray",
+  //     body_type: "sedan",
+  //     url: "https://livecarmodel.com/products/1-8-2010-rolls-royce-ghost-diamond-black-resin-car-model.html",
+  //     image:
+  //       "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
+  //     fuel: "petrol",
+  //   },
+  //   {
+  //     make: "Porsche",
+  //     model: "911 GT2 RS",
+  //     price: 645.4,
+  //     engine: "3.8 -litre twin-turbocharged flat-6",
+  //     body_type: "coupe",
+  //     fuel: "petrol",
+  //     colour: "black",
+  //     url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
+  //     image:
+  //       "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
+  //   },
+  // ];
 
   //show a recommendation based on the mood
 
@@ -119,27 +122,46 @@ function Form() {
     
   };
 
+  //call api to get matching cars
+useEffect (() => {
+  fetch(`${process.env.REACT_APP_API_URL}products/`)
+  .then((results) => {
+    console.log("results:", results);
+
+    return results.json();
+  })
+  .then((data) => {
+    console.log("data:", data);
+    setCarsOptions(data);
+  });
+
+}, [])
+
+
   //filter based on attributes
   const matchingCars = (e) => {
     //filter by price
+    //pass my response from api
     let filteredCars = matchingPrice(carsOptions);
-    
+    console.log("the suggested cARS", suggestedCar)
 
-    if (suggestedCar.colour.length >0) {
+    if (suggestedCar.colour !== "") {
       filteredCars = matchingColor(filteredCars);
       
+      console.log("By color", filteredCars)
     }
 
-    if (suggestedCar.body_type.length >0) {
+    if (suggestedCar.body_type !== "") {
       filteredCars = matchingBodyType(filteredCars);
-      
+      console.log("By body", filteredCars)
     }
 
-    if (suggestedCar.colour.length >0) {
+    if (suggestedCar.fuel !== "") {
       filteredCars = matchingFuel(filteredCars);
-      
+      console.log("By fuel", filteredCars)
     }
-
+      console.log("The filtered cars", filteredCars)
+      setBestCarMatches(filteredCars)
       return filteredCars;
   };
 
@@ -147,7 +169,7 @@ function Form() {
 
   function matchingColor(cars) {
     return cars.filter((car) => {
-      if (car.colour !== suggestedCar.colour) {
+      if (car.colour.toLowerCase() !== suggestedCar.colour.toLowerCase()) {
         
         return false;
       }
@@ -210,11 +232,12 @@ function Form() {
   function handleSubmit(e) {
     e.preventDefault();
     const result = matchingCars(e);
-    setbestCarMatches(result)
+    
+    //setbestCarMatches(result)
     return result;
   }
 
-  console.log('best match car:', bestCarMatches)
+  console.log('cars options', carsOptions)
 
   return (
     <div>
@@ -242,7 +265,7 @@ function Form() {
             <option disabled selected value=""></option>
             <option value="black">black</option>
             <option value="white">white</option>
-            <option value="blue">blue</option>
+            <option value="Blue">blue</option>
             <option value="red">gray</option>
           </select>
         </div>
@@ -265,8 +288,6 @@ function Form() {
         <div>
           <label>Do you love nature?</label>
           <select
-            //onChange={(e) => setFuelQuestion(e.target.value)}
-            //onClick={matchingCar}
             onChange={getUserPreferences}
             id="fuel"
             name="fuel"
