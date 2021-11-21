@@ -4,9 +4,11 @@ import { useHistory, Link } from "react-router-dom";
 function LoginPage() {
   return (
     <div>
-      <h1 class="luxe">Luxe</h1>
+      <div id="img-div">
+        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
+      </div>
       <form class="container">
-        <h3>Login</h3>
+        <h3 class="standard-text">Login</h3>
         <div>
           <input
             type="text"
