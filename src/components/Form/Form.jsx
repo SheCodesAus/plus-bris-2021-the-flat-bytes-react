@@ -233,6 +233,9 @@ function Form() {
 
   return (
     <div>
+      <div id="img-div">
+        <img id="banner-small" src={"../Luxe-logo-banner.png"} alt="" />
+      </div>
       <form onSubmit={handleSubmit}>
         <div class="container">
           <label class="standard-text">
@@ -302,10 +305,8 @@ function Form() {
             </option>
           </select>
         </div>
-        <div>
-          <button class="container" type="submit">
-            Help me choose
-          </button>
+        <div class="container" style={{ marginTop: "5%" }}>
+          <button type="submit">Help me choose</button>
         </div>
       </form>
       <h1 class="standard-text">Best Car Matches:</h1>
