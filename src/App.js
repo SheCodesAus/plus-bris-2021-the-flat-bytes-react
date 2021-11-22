@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import HomePage from "./Pages/HomePage";
@@ -10,6 +10,7 @@ import SignUpPage from "./Pages/SignUp";
 
 
 function App() {
+  const [authenticated,setAuthenticated]=useState(true)
   return (
   <Router>
     <div id="background">
@@ -22,6 +23,9 @@ function App() {
         <Route path="/signup" element={<SignUpPage />} />
       </Routes>
     </div>
+   {authenticated && <Nav />}
+   
+
   </Router>
   );
 }

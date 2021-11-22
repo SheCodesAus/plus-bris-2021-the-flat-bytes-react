@@ -1,0 +1,15 @@
+.nav_component {
+    background-color:grey;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+}
+
+li {
+display: table-row;
+min-width: 20vw;
+padding-right:4px;
+padding-left:4px;
+float: left;
+}
+
