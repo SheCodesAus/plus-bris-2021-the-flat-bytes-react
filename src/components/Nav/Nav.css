@@ -1,15 +1,16 @@
 .nav_component {
+    display: flex;
     background-color:grey;
     width: 100%;
     position: fixed;
+    justify-content: space-between;
     bottom: 0;
 }
 
 li {
 display: table-row;
+padding: 14px 16px;
 min-width: 20vw;
-padding-right:4px;
-padding-left:4px;
 float: left;
 }
 
