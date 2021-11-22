@@ -9,7 +9,7 @@ const PageNotFound = () => {
         Our apologies, this is almost certainly not the page you were looking
         for.
         <br />
-        Please visit our home page or feel free to reach out to let us know what
+        Please visit our home page or feel free to reach out and let us know what
         went wrong.
       </p>
     </div>

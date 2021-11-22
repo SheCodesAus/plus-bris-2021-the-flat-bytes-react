@@ -12,11 +12,11 @@
     width: 30%;
 }
 
-li {
-display: table-row;
-padding: 14px 16px;
-text-align: center;
-min-width: 20vw;
-/* float: center; */
+ul {
+    display: table-row;
+    padding: 14px 16px;
+    text-align: center;
+    min-width: 20vw;
+    /* float: center; */
 }
 
