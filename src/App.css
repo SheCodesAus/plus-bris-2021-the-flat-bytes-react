@@ -32,17 +32,28 @@
 .standard-text {
   display: block;
   margin: auto;
+  text-align: center;
   margin-top: 10%;
   color: white;
   font-weight: 200;
   font-family: "Montserrat", sans-serif;
   size: 0.8cm;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
+}
+
+.form-input.standard-text {
+  margin:10%;
+  text-align:center;
+}
+
+
+#login-title {
+  margin-top: 5%;
 }
 
 p {
-  text-align: center;
-  color: white;
+  font-weight: 200;
+  color: #ffffff;
 }
 
 #img-div {
@@ -52,10 +63,17 @@ p {
   margin-top: 10%;
 }
 
-.login {
+.button {
   display: flex;
   justify-content: center;
   margin: 5%;
+}
+
+button:hover, button:active {
+  background-image: linear-gradient(to bottom right, white , #fbbf64);  
+  color: #090909;
+  border-color: #090909;
+  cursor: pointer;
 }
 
 button {
@@ -77,8 +95,20 @@ a:visited {
 }
 
 .container {
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
+  margin: auto;
   align-items: center;
   flex-direction: column;
+}
+
+
+input#username, input#password {
+  padding: 2%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  background-color: #090909;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }
