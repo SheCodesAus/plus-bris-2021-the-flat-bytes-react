@@ -129,15 +129,14 @@ input#name, input#email,input#username, input#password {
 select {
   width: 40%;
   height: 5vh;
+  text-align-last: center;
 }
 
-option {
+select, option {
   font-family: "Montserrat", sans-serif;
+  color: #090909;
 }
 
-select.decorated option:hover {
-  box-shadow: 0 0 10px 100px #1882A8 inset;
-}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px){
