@@ -136,7 +136,8 @@ option {
 }
 
 select.decorated option:hover {
-  box-shadow: 0 0 10px 100px #1882A8 inset;
+  box-shadow: 0 0 10px 100px #fbbf64 inset;
+  color: #090909
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
