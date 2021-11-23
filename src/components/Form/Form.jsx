@@ -240,7 +240,8 @@ function Form() {
       <form onSubmit={handleSubmit}>
         <div class="container">
           <div class="form-intro">
-            <p>Answer these few questions and our AI will determine <br/> the best purchase for you</p>
+            <p>Answer these few questions and our AI  <br/>
+          will determine the best purchase for you</p>
           </div>
           <label class="form-input standard-text">
             How much money are you willing to spend?
@@ -309,7 +310,7 @@ function Form() {
             </option>
           </select>
         </div>
-        <div class="container" style={{ marginTop: "5%" }}>
+        <div class="submit-container container">
           <button type="submit">Help me choose</button>
         </div>
       </form>
