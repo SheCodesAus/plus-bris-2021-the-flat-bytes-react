@@ -238,10 +238,10 @@ function Form() {
       </div>
       <div id="form-wrapper">
       <form onSubmit={handleSubmit}>
-        <div class="container">
+        <div class="container select-container">
           <div class="form-intro">
-            <p>Answer these few questions and our AI  <br/>
-          will determine the best purchase for you</p>
+            <h1>Answer these few questions and our AI  <br/>
+          will determine the best purchase for you</h1>
           </div>
           <label class="form-input standard-text">
             How much money are you willing to spend?
@@ -253,7 +253,7 @@ function Form() {
             <option value="651.0-790.0">$651.000-790.000</option>
           </select>
         </div>
-        <div class="container">
+        <div class="container select-container">
           <label class="form-input standard-text">What color do you prefer?</label>
           <select onChange={getUserPreferences} id="colour" name="colour">
             <option disabled selected value=""></option>
@@ -264,7 +264,7 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
+        <div class="container select-container">
           <label class="form-input standard-text">
             In what body type do you feel most comfortable?
           </label>
@@ -277,7 +277,7 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
+        <div class="container select-container">
           <label class="form-input standard-text">Do you love nature?</label>
           <select onChange={getUserPreferences} id="fuel" name="fuel">
             <option disabled selected value=""></option>
@@ -286,7 +286,7 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
+        <div class="container select-container">
           <label class="form-input standard-text">How are you feeling today?</label>
           <select
             value={mood}

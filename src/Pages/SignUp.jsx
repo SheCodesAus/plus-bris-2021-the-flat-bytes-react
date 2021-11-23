@@ -1,14 +1,17 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
+  const navigate = useNavigate
+  const goHome = () => {
+    navigate("/home")
+  }
   return (
     <div>
       <div id="img-div">
         <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
       </div>
       <form class="container">
-        <h3 class="standard-text">Sign-up</h3>
         <div>
           <input
             type="text"
@@ -19,8 +22,8 @@ function SignUpPage() {
         </div>
         <div>
           <input
-            type="text"
-            id="username"
+            type="email"
+            id="email"
             placeholder="Email"
             // onChange={handleChange} -> create this function when APIs linked
           />
@@ -43,10 +46,8 @@ function SignUpPage() {
           />
         </div>
       </form>
-      <div class="container" style={{ marginTop: "5%" }}>
-        <button>
-          <Link to="/home">Signup</Link>
-        </button>
+      <div class="container submit-container">
+      <button onClick={goHome}>SIGNUP</button>
       </div>
     </div>
   );

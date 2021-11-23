@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -7,7 +7,7 @@ function LoginPage() {
     navigate("/home")
   }
   const signUp = () => {
-    navigate()
+    navigate("/signup")
   }
   return (
     <div>
@@ -33,7 +33,7 @@ function LoginPage() {
           />
         </div>
       </form>
-      <div class="container" style={{ marginTop: "5%" }}>
+      <div class="button-container container">
       <button onClick={doLogin}>LOGIN</button>
         <p>or</p>
         <button onClick={signUp}>SIGN UP</button>
