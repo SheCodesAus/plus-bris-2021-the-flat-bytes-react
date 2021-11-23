@@ -2,7 +2,7 @@ import React from "react";
 
 const PageNotFound = () => {
   return (
-    <div>
+    <div id="error">
       <p id="error-text">
         <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
         <br />
