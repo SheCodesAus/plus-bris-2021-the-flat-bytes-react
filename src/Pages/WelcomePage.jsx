@@ -13,11 +13,10 @@ function WelcomePage() {
       </div>
       <div class="standard-text">
         <p>Welcome to Luxe,</p>
-        <p>Your AI shopping assistant.</p><br/>
-
-        <p>Let us assist you in your next purchase.</p>
+        <p>your AI shopping assistant.</p><br/>
+        <p>Let our algorithm guide you<br/>in your next purchase. </p>
       </div>
-      <div class="login" style={{ textDecoration: "none" }}>
+      <div class="button">
         <button onClick={redirectToLogin}>ENTER</button>
       </div>
     </div>
