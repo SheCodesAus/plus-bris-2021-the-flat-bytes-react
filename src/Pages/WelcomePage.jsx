@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
@@ -17,7 +17,6 @@ function WelcomePage() {
       </div>
       <div class="login" style={{ textDecoration: "none" }}>
         <button onClick={redirectToLogin}>ENTER</button>
-        {/* Not sure how to remove underline from link */}
       </div>
     </div>
   );
