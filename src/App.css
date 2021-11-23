@@ -11,56 +11,78 @@
   color: #ffffff;
 }
 
-/* Link {
-  text-decoration: none;
-} */
-/* 
-.luxe {
-  font-family: "Montserrat", sans-serif;
-  border: solid white;
-  border-radius: 3mm;
-  color: white;
-  background-color: black;
-  display: inline-block;
-  padding: 1% 2% 1% 2%;
-  margin: 1%;
-} */
+#banner {
+  width: 100%;
+}
 
-#welcome {
+#banner-small {
+  height: 15%;
+}
+
+#error-text {
   display: block;
   margin: auto;
+  color: white;
+  font-weight: 200;
+  font-family: "Montserrat", sans-serif;
+  size: 0.8cm;
+  margin-bottom: 2%;
+}
+
+.standard-text {
+  display: block;
+  margin: auto;
+  text-align: center;
   margin-top: 10%;
   color: white;
   font-weight: 200;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   size: 0.8cm;
+  margin-bottom: 10%;
+}
+
+.form-input.standard-text {
+  margin:10%;
+  text-align:center;
+}
+
+
+#login-title {
+  margin-top: 5%;
 }
 
 p {
-  text-align: center;
+  font-weight: 200;
+  color: #ffffff;
 }
 
 #img-div {
   display: flex;
   justify-content: center;
-  margin:auto;
+  margin: auto;
   margin-top: 10%;
 }
 
-.login {
+.button {
   display: flex;
   justify-content: center;
   margin: 5%;
 }
 
+button:hover, button:active {
+  background-image: linear-gradient(to bottom right, white , #fbbf64);  
+  color: #090909;
+  border-color: #090909;
+  cursor: pointer;
+}
+
 button {
   background-color: transparent;
   color: #ffffff;
-  border: .5px solid #ffffff;
-  font-family: 'Montserrat', sans-serif;
+  border: 0.5px solid #ffffff;
+  font-family: "Montserrat", sans-serif;
   font-weight: 200;
   font-size: 1em;
-  margin-top: 15%;
   padding: 3%;
 }
 
@@ -73,8 +95,20 @@ a:visited {
 }
 
 .container {
-  justify-content: space-around;
+  justify-content: center;
   display: flex;
+  margin: auto;
   align-items: center;
   flex-direction: column;
+}
+
+
+input#username, input#password {
+  padding: 2%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  background-color: #090909;
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
 }

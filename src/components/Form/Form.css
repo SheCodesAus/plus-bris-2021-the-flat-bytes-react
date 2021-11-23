@@ -1,13 +1,8 @@
 .car_form {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    align-items: center;
-    justify-content: center;
-    margin: 20em;
-}
-
-.form {
-    width: 50%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  justify-content: center;
+  margin: 20em;
 }

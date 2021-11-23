@@ -1,23 +1,23 @@
 import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
   const navigate = useNavigate();
   const redirectToLogin = () => {
-    navigate('/login')
-  }
+    navigate("/login");
+  };
   return (
     <div>
       <div id="img-div">
-      <img id="banner" src={"../Luxe-logo-banner.png"} alt=""/>
+        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
       </div>
-      <div id="welcome">
-        <p>Welcome,</p>
-        <p>Let us help you with your next purchase</p>
+      <div class="standard-text">
+        <p>Welcome to Luxe,</p>
+        <p>your AI shopping assistant.</p><br/>
+        <p>Let our algorithm guide you<br/>in your next purchase. </p>
       </div>
-      <div class="login" style={{ textDecoration: "none" }}>
+      <div class="button">
         <button onClick={redirectToLogin}>ENTER</button>
-          {/* Not sure how to remove underline from link */}
       </div>
     </div>
   );
