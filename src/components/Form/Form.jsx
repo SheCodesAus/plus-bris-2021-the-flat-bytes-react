@@ -179,16 +179,21 @@ function Form() {
     return result;
   }
 
-  console.log("cars options", carsOptions);
+  // console.log("cars options", carsOptions);
 
   return (
-    <div>
+    <div id="form-page">
       <div id="img-div">
         <img id="banner-small" src={"../Luxe-logo-banner.png"} alt="" />
       </div>
+      <div id="form-wrapper">
       <form onSubmit={handleSubmit}>
-        <div class="container">
-          <label class="standard-text">
+        <div class="container select-container">
+          <div class="form-intro">
+            <h1>Answer these few questions and our AI  <br/>
+          will determine the best purchase for you</h1>
+          </div>
+          <label class="form-input standard-text">
             How much money are you willing to spend?
           </label>
           <select onClick={getUserPreferences} id="price" name="price">
@@ -198,8 +203,8 @@ function Form() {
             <option value="621.0-999.0">$620.000-999.000</option>
           </select>
         </div>
-        <div class="container">
-          <label class="standard-text">What color do you prefer?</label>
+        <div class="container select-container">
+          <label class="form-input standard-text">What color do you prefer?</label>
           <select onChange={getUserPreferences} id="colour" name="colour">
             <option disabled selected value=""></option>
             <option value="Black">black</option>
@@ -212,8 +217,8 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
-          <label class="standard-text">
+        <div class="container select-container">
+          <label class="form-input standard-text">
             In what body type do you feel most comfortable?
           </label>
           <select onChange={getUserPreferences} id="body_type" name="body_type">
@@ -225,8 +230,8 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
-          <label class="standard-text">Do you love nature?</label>
+        <div class="container select-container">
+          <label class="form-input standard-text">Do you love nature?</label>
           <select onChange={getUserPreferences} id="fuel" name="fuel">
             <option disabled selected value=""></option>
             <option value="electrical">Yes, of course</option>
@@ -234,8 +239,8 @@ function Form() {
           </select>
         </div>
 
-        <div class="container">
-          <label class="standard-text">How are you feeling today?</label>
+        <div class="container select-container">
+          <label class="form-input standard-text">How are you feeling today?</label>
           <select
             value={mood}
             onChange={(e) => setMood(e.target.value)}
@@ -251,17 +256,18 @@ function Form() {
               It could be better
             </option>
             <option onClick={handleMoodQuestion} value="tired">
-              I am tried and not in the mood today
+              I am tired and not in the mood today
             </option>
             <option onClick={handleMoodQuestion} value="cheerful">
               I am smiling and happy today!
             </option>
           </select>
         </div>
-        <div class="container" style={{ marginTop: "5%" }}>
+        <div class="submit-container container">
           <button type="submit">Help me choose</button>
         </div>
       </form>
+      </div>
       <h1 class="standard-text">Best Car Matches:</h1>
       {!bestCarMatches.length && (
         <p class="standard-text">No car matches found.</p>
