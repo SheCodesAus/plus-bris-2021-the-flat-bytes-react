@@ -16,57 +16,7 @@ function Form() {
   const [carsFromAPI, setCarsFromApi] = useState([]);
   const [carsOptions, setCarsOptions] = useState([]);
 
-  // const carsOptions = [
-  //   {
-  //     make: "Ferrari",
-  //     model: "GTC4Lusso",
-  //     price: 575.0,
-  //     engine: "6.3-litre V12",
-  //     body_type: "coupe",
-  //     fuel: "electric",
-  //     colour: "white",
-  //     url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
-  //     image:
-  //       "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
-  //   },
-
-  //   {
-  //     make: "Bentley",
-  //     model: "Mulsanne Speed",
-  //     price: 455.5,
-  //     engine: "6.8-litre Twin Turbo V8",
-  //     body_type: "sedan",
-  //     fuel: "electric",
-  //     colour: "white",
-  //     url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
-  //     image:
-  //       "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
-  //   },
-  //   {
-  //     make: "Rolls-Royce",
-  //     model: "Ghost",
-  //     price: 755.0,
-  //     engine: "6.7-litre V12",
-  //     colour: "gray",
-  //     body_type: "sedan",
-  //     url: "https://livecarmodel.com/products/1-8-2010-rolls-royce-ghost-diamond-black-resin-car-model.html",
-  //     image:
-  //       "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
-  //     fuel: "petrol",
-  //   },
-  //   {
-  //     make: "Porsche",
-  //     model: "911 GT2 RS",
-  //     price: 645.4,
-  //     engine: "3.8 -litre twin-turbocharged flat-6",
-  //     body_type: "coupe",
-  //     fuel: "petrol",
-  //     colour: "black",
-  //     url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
-  //     image:
-  //       "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
-  //   },
-  // ];
+  
 
   //show a recommendation based on the mood
 
@@ -176,20 +126,20 @@ function Form() {
     let maxPrice = 0;
 
     switch (suggestedCar.price) {
-      case "400.0-540.0":
-        minPrice = 400.0;
-        maxPrice = 540.0;
+      case "50.0-429.0":
+        minPrice = 50.0;
+        maxPrice = 429.0;
         break;
-      case "541.0-650.0":
-        minPrice = 541.0;
-        maxPrice = 650.0;
+      case "431.0-620.0":
+        minPrice = 430.0;
+        maxPrice = 620.0;
         break;
-      case "651.0-790.0":
-        minPrice = 651.0;
-        maxPrice = 790.0;
+      case "621.0-999.0":
+        minPrice = 621.0;
+        maxPrice = 999.0;
         break;
       default:
-        minPrice = 100.0;
+        minPrice = 50.0;
         maxPrice = 11111111111.0;
         break;
     }
@@ -243,19 +193,22 @@ function Form() {
           </label>
           <select onClick={getUserPreferences} id="price" name="price">
             <option disabled selected value=""></option>
-            <option value="400.0-540.0">$400.000-540.000</option>
-            <option value="541.0-650.0">$541.000-650.000</option>
-            <option value="651.0-790.0">$651.000-790.000</option>
+            <option value="50.0-429.0">$50.0-430.000</option>
+            <option value="431.0-620.0">$450.000-620.000</option>
+            <option value="621.0-999.0">$620.000-999.000</option>
           </select>
         </div>
         <div class="container">
           <label class="standard-text">What color do you prefer?</label>
           <select onChange={getUserPreferences} id="colour" name="colour">
             <option disabled selected value=""></option>
-            <option value="black">black</option>
-            <option value="white">white</option>
+            <option value="Black">black</option>
+            <option value="White">white</option>
             <option value="Blue">blue</option>
-            <option value="red">gray</option>
+            <option value="Red">red</option>
+            <option value="Yellow">yellow</option>
+            <option value="Green">green</option>
+            <option value="Gray">gray</option>
           </select>
         </div>
 
@@ -276,7 +229,7 @@ function Form() {
           <label class="standard-text">Do you love nature?</label>
           <select onChange={getUserPreferences} id="fuel" name="fuel">
             <option disabled selected value=""></option>
-            <option value="electric">Yes, of course</option>
+            <option value="electrical">Yes, of course</option>
             <option value="petrol">Not really</option>
           </select>
         </div>
@@ -319,9 +272,10 @@ function Form() {
             <CarCard
               image={car.image}
               make={car.make}
-              model={car.model}
+              car_model={car.car_model}
               price={car.price}
-              colour={car.color}
+              colour={car.colour}
+              body_type={car.body_type}
               url={car.url}
             />
           );
@@ -335,9 +289,10 @@ function Form() {
           <CarCard
             image={suggestedCar.image}
             make={suggestedCar.make}
-            model={suggestedCar.model}
+            car_model={suggestedCar.car_model}
             price={suggestedCar.price}
             colour={suggestedCar.colour}
+            body_type={suggestedCar.body_type}
             url={suggestedCar.url}
           />
         </div>
