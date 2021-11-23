@@ -11,6 +11,9 @@ function Form() {
     fuel: "",
   });
 
+  
+
+
   const [mood, setMood] = useState("");
   const [bestCarMatches, setBestCarMatches] = useState([]);
   const [carsFromAPI, setCarsFromApi] = useState([]);
@@ -21,33 +24,84 @@ function Form() {
   //show a recommendation based on the mood
 
   const handleMoodQuestion = (e) => {
+    const moodOptions = [
+      {
+        make: "Ferrari",
+        model: "GTC4Lusso",
+        price: 575.0,
+        engine: "6.3-litre V12",
+        body_type: "coupe",
+        fuel: "electric",
+        colour: "white",
+        url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
+        image:
+          "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
+      },
+   
+      {
+        make: "Bentley",
+        model: "Mulsanne Speed",
+        price: 455.5,
+        engine: "6.8-litre Twin Turbo V8",
+        body_type: "sedan",
+        fuel: "electric",
+        colour: "white",
+        url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
+        image:
+          "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
+      },
+      {
+        make: "Rolls-Royce",
+        model: "Ghost",
+        price: 755.0,
+        engine: "6.7-litre V12",
+        colour: "gray",
+        body_type: "sedan",
+        url: "https://livecarmodel.com/products/1-8-2010-rolls-royce-ghost-diamond-black-resin-car-model.html",
+        image:
+          "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
+        fuel: "petrol",
+      },
+      {
+        make: "Porsche",
+        model: "911 GT2 RS",
+        price: 645.4,
+        engine: "3.8 -litre twin-turbocharged flat-6",
+        body_type: "coupe",
+        fuel: "petrol",
+        colour: "black",
+        url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
+        image:
+          "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
+      },
+    ];
     const answersMood = ["happy", "sad", "tired", "cheerful"];
     if (e.target.value === answersMood[0]) {
       console.log(
         "Your answer is",
         answersMood[0],
         "and your best match car is",
-        carsOptions[0]
+        moodOptions[0]
       );
-      setSuggestedCar(carsOptions[0]);
+      setSuggestedCar(moodOptions[0]);
     }
     if (e.target.value === answersMood[1]) {
       console.log(
         "Your answer is",
         answersMood[1],
         "and your best match car is",
-        carsOptions[1]
+        moodOptions[1]
       );
-      setSuggestedCar(carsOptions[1]);
+      setSuggestedCar(moodOptions[1]);
     }
     if (e.target.value === answersMood[2]) {
       console.log(
         "Your answer is",
         answersMood[2],
         "and your best match car is",
-        carsOptions[2]
+        moodOptions[2]
       );
-      setSuggestedCar(carsOptions[2]);
+      setSuggestedCar(moodOptions[2]);
     }
     if (e.target.value === answersMood[3]) {
       console.log(
@@ -56,7 +110,7 @@ function Form() {
         "and your best match car is",
         carsOptions[3]
       );
-      setSuggestedCar(carsOptions[3]);
+      setSuggestedCar(moodOptions[3]);
     }
   };
 
