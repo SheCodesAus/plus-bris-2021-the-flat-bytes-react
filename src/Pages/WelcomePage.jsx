@@ -12,10 +12,11 @@ function WelcomePage() {
         <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
       </div>
       <div class="standard-text">
-        <p>Welcome,</p>
-        <p>Let us help you with your next purchase</p>
+        <p>Welcome to Luxe,</p>
+        <p>your AI shopping assistant.</p><br/>
+        <p>Let our algorithm guide you<br/>in your next purchase. </p>
       </div>
-      <div class="login" style={{ textDecoration: "none" }}>
+      <div class="button">
         <button onClick={redirectToLogin}>ENTER</button>
       </div>
     </div>

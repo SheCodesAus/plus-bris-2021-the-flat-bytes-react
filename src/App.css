@@ -10,10 +10,10 @@
 .form {
   color: #ffffff;
 }
-
+/* 
 #banner {
   width: 100%;
-}
+} */
 
 #banner-small {
   height: 15%;
@@ -32,17 +32,36 @@
 .standard-text {
   display: block;
   margin: auto;
+  text-align: center;
   margin-top: 10%;
   color: white;
   font-weight: 200;
   font-family: "Montserrat", sans-serif;
   size: 0.8cm;
-  margin-bottom: 2%;
+  margin-bottom: 10%;
+}
+
+.form-input.standard-text {
+  margin:5%;;
+  text-align:center;
+}
+
+
+#login-title {
+  margin-top: 5%;
+}
+
+h1, p {
+  font-weight: 200;
+  color: #ffffff;
 }
 
 p {
-  text-align: center;
-  color: white;
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 1.3em;
 }
 
 #img-div {
@@ -52,10 +71,17 @@ p {
   margin-top: 10%;
 }
 
-.login {
+.button {
   display: flex;
   justify-content: center;
   margin: 5%;
+}
+
+button:hover, button:active {
+  background-image: linear-gradient(to bottom right, white , #fbbf64);  
+  color: #090909;
+  border-color: #090909;
+  cursor: pointer;
 }
 
 button {
@@ -77,8 +103,91 @@ a:visited {
 }
 
 .container {
-  justify-content: space-between;
+  justify-content: center;
   display: flex;
+  margin: auto;
+  margin-top: 5%;
   align-items: center;
   flex-direction: column;
 }
+
+.submit-container.container {
+  margin-top: 15%;;
+}
+
+
+input#name, input#email,input#username, input#password {
+  padding: 2%;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1em;
+  /* background-color: #090909; */
+  margin-top: 2.5%;
+  margin-bottom: 2.5%;
+}
+
+select {
+  width: 40%;
+  height: 5vh;
+}
+
+option {
+  font-family: "Montserrat", sans-serif;
+}
+
+select.decorated option:hover {
+  box-shadow: 0 0 10px 100px #1882A8 inset;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px){
+  #img-div {
+    margin-top: 5%;
+  }
+  .standard-text {
+    margin-top: 5%;
+    margin-bottom: 10%;
+  }
+  .form-input.standard-text {
+    margin: 2%;
+    text-align:center;
+  }
+  .submit-container.container {
+    margin: 8% 0% 5% 0%;;
+  }
+  .container.select-container {
+    margin-top: 3%;;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up */
+@media only screen and (min-width: 992px){
+  #img-div {
+    margin-top: 2%;
+  }
+  .standard-text {
+    margin-top: 0%;
+    margin-bottom: 5%;
+  }
+  p {
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  .button {
+    margin-top: 2%;
+  }
+  button {
+    padding: 2%;
+    margin: 0% 1% 0% 1%;
+  }
+  .container {
+    margin-top:0%;
+  }
+  .button-container.container, .submit-container.container{
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+  }
+}
+
+/* extra-large devices (large laptops and desktops, 1200px and up) */
