@@ -10,10 +10,10 @@
 .form {
   color: #ffffff;
 }
-
+/* 
 #banner {
   width: 100%;
-}
+} */
 
 #banner-small {
   height: 15%;
@@ -42,7 +42,7 @@
 }
 
 .form-input.standard-text {
-  margin:10%;
+  margin:5%;;
   text-align:center;
 }
 
@@ -102,6 +102,10 @@ a:visited {
   flex-direction: column;
 }
 
+.submit-container.container {
+  margin-top: 15%;;
+}
+
 
 input#username, input#password {
   padding: 2%;
@@ -112,3 +116,4 @@ input#username, input#password {
   margin-top: 2.5%;
   margin-bottom: 2.5%;
 }
+
