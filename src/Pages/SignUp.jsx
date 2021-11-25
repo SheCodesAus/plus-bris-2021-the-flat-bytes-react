@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  const navigate = useNavigate
+  const navigate = useNavigate();
   const goHome = () => {
     navigate("/home")
   }
@@ -24,7 +24,7 @@ function SignUpPage() {
         [id]: value,
       }
     });
-    console.log(userDetails)
+    
   }
  
   const postData = async() => {
@@ -46,11 +46,10 @@ function SignUpPage() {
   }
 
   const handleSubmit = (e) => {
-    console.log("Trying to submit")
     e.preventDefault();
     postData().then((response) => {
+    navigate("/login")  
       
-      console.log("Response from API------", response)
     });
     
   };
