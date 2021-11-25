@@ -4,50 +4,11 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const navigate = useNavigate();
   const doLogin = () => {
-    navigate("/home");
-  };
+    navigate("/home")
+  }
   const signUp = () => {
-    navigate("/signup");
-  };
-
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-  });
-
-  const handleChange = (e) => {
-    const { id, value } = e.target;
-    setCredentials((prevCredentials) => ({
-      ...prevCredentials,
-      [id]: value,
-    }));
-   
-  };
-
-  const postData = async () => {
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}api-token-auth/`,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(credentials),
-      }
-    );
-    return response.json();
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (credentials.username && credentials.password) {
-      postData().then((response) => {
-        window.localStorage.setItem("token", response.token);
-        navigate("/home");
-        
-      });
-    }
-  };
+    navigate("/signup")
+  }
   return (
     <div>
       <div id="img-div">
@@ -59,7 +20,7 @@ function LoginPage() {
             type="text"
             id="username"
             placeholder="Enter username"
-            onChange={handleChange}
+            // onChange={handleChange} -> create this function when APIs linked
           />
         </div>
         <div>
@@ -68,12 +29,12 @@ function LoginPage() {
             type="password"
             id="password"
             placeholder="Password"
-            onChange={handleChange}
+            // onChange={handleChange} -> create this function when APIs linked
           />
         </div>
       </form>
       <div class="button-container container">
-        <button onClick={handleSubmit}>LOGIN</button>
+      <button onClick={doLogin}>LOGIN</button>
         <p>or</p>
         <button onClick={signUp}>SIGN UP</button>
       </div>
