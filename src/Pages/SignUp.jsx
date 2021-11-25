@@ -1,53 +1,115 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  const navigate = useNavigate
+  const navigate = useNavigate();
   const goHome = () => {
     navigate("/home")
   }
+
+  const initialDetails = {
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    password: ""
+  }
+
+  const [userDetails, setUserDetails] = useState(initialDetails);
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setUserDetails((prevUserDetails) => {
+      return {
+        ...prevUserDetails,
+        [id]: value,
+      }
+    });
+    
+  }
+ 
+  const postData = async() => {
+
+    
+    setUserDetails(initialDetails)
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}users/`, 
+      {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetails)
+      }
+    );
+    
+    return response.json();
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    postData().then((response) => {
+    navigate("/login")  
+      
+    });
+    
+  };
+
   return (
     <div>
       <div id="img-div">
         <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
       </div>
       <form class="container">
-        <div>
+      <div class="form-field">
+          <label htmlFor="First name"></label>
           <input
             type="text"
-            id="name"
-            placeholder="Name"
-            // onChange={handleChange} -> create this function when APIs linked
+            id="first_name"
+            placeholder="First name"
+            onChange={handleChange}
           />
         </div>
-        <div>
+        <div class="form-field">
+        
           <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            // onChange={handleChange} -> create this function when APIs linked
+            type="text"
+            id="last_name"
+            placeholder="Last name"
+            onChange={handleChange}
           />
         </div>
-        <div>
+        
+        <div class="form-field">
+        
           <input
             type="text"
             id="username"
             placeholder="Username"
-            // onChange={handleChange} -> create this function when APIs linked
+            onChange={handleChange}
+          />
+        </div>
+
+        <div class="form-field">
+          
+          <input
+            type="email"
+            id="email"
+            placeholder="Email"
+            onChange={handleChange}
           />
         </div>
         <div class="form-field">
-          <label htmlFor="Password"></label>
+          
           <input
             type="password"
             id="password"
             placeholder="Password"
-            // onChange={handleChange} -> create this function when APIs linked
+            onChange={handleChange}
           />
         </div>
       </form>
       <div class="container submit-container">
-      <button onClick={goHome}>SIGNUP</button>
+      <button onClick={handleSubmit} type="submit">SIGNUP</button>
       </div>
     </div>
   );
