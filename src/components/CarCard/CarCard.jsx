@@ -2,8 +2,7 @@ import React from "react";
 import "./CarCard.css";
 
 // Pass a suggested car or "best match" car
-function CarCard({ image, make, car_model, price, colour, body_type, url}) {
-  
+function CarCard({ image, make, car_model, price, colour, body_type, url }) {
   return (
     <div className="car-card">
       <img alt="" src={image} />
