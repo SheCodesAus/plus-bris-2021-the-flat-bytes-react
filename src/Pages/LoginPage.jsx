@@ -76,10 +76,7 @@ function LoginPage() {
       <div class="button-container container">
       <button onClick={handleSubmit}>LOGIN</button>
         <p>or</p>
-        <button >SIGN UP</button>
-      {/* <button onClick={doLogin}>LOGIN</button>
-        <p>or</p>
-        <button onClick={signUp}>SIGN UP</button> */}
+        <button onClick={signUp}>SIGN UP</button>
       </div>
     </div>
   );
