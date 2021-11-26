@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import HomePage from "./Pages/HomePage";
@@ -11,6 +11,7 @@ import PageNotFound from "./Pages/NotFound";
 
 
 function App() {
+  const [authenticated,setAuthenticated]=useState(true)
   return (
   <Router>
     <div id="background">
@@ -24,6 +25,9 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
+   {/* {authenticated && <Nav />} */}
+   
+
   </Router>
   );
 }

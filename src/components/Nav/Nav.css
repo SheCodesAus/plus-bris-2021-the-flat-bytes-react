@@ -1,0 +1,22 @@
+.nav_component {
+    background-color: #090909;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.nav_component img {
+    width: 30%;
+}
+
+ul {
+    display: table-row;
+    padding: 14px 16px;
+    text-align: center;
+    min-width: 20vw;
+    /* float: center; */
+}
+

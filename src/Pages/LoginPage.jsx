@@ -4,24 +4,24 @@ import { useNavigate } from "react-router-dom";
 function LoginPage() {
   const navigate = useNavigate();
   const doLogin = () => {
-    navigate("/home");
-  };
+    navigate("/home")
+  }
   const signUp = () => {
-    navigate("/signup");
-  };
+    navigate("/signup")
+  }
 
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
-
+ 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setCredentials((prevCredentials) => ({
       ...prevCredentials,
       [id]: value,
     }));
-   
+    console.log(credentials);
   };
 
   const postData = async () => {
@@ -43,6 +43,7 @@ function LoginPage() {
     if (credentials.username && credentials.password) {
       postData().then((response) => {
         window.localStorage.setItem("token", response.token);
+
         navigate("/home");
       });
     }
@@ -73,9 +74,12 @@ function LoginPage() {
         </div>
       </form>
       <div class="button-container container">
-        <button onClick={handleSubmit}>LOGIN</button>
+      <button onClick={handleSubmit}>LOGIN</button>
         <p>or</p>
-        <button onClick={signUp}>SIGN UP</button>
+        <button >SIGN UP</button>
+      {/* <button onClick={doLogin}>LOGIN</button>
+        <p>or</p>
+        <button onClick={signUp}>SIGN UP</button> */}
       </div>
     </div>
   );
