@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React,  useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -43,11 +43,12 @@ function LoginPage() {
     if (credentials.username && credentials.password) {
       postData().then((response) => {
         window.localStorage.setItem("token", response.token);
-        
-        console.log(response);
+
+        navigate("/home");
       });
     }
-  };
+  }
+  
   return (
     <div>
       <div id="img-div">
