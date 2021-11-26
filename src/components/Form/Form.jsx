@@ -249,22 +249,22 @@ function Form() {
           </label>
           <select onClick={getUserPreferences} id="price" name="price">
             <option disabled selected value=""></option>
-            <option value="50.0-429.0">$50.0-430.000</option>
-            <option value="431.0-620.0">$450.000-620.000</option>
-            <option value="621.0-999.0">$620.000-999.000</option>
+            <option value="50.0-429.0">$50.000-$430.000</option>
+            <option value="431.0-620.0">$450.000-$620.000</option>
+            <option value="621.0-999.0">$620.000-$999.000</option>
           </select>
         </div>
         <div class="container select-container">
           <label class="form-input standard-text">What color do you prefer?</label>
           <select onChange={getUserPreferences} id="colour" name="colour">
             <option disabled selected value=""></option>
-            <option value="Black">black</option>
-            <option value="White">white</option>
-            <option value="Blue">blue</option>
-            <option value="Red">red</option>
-            <option value="Yellow">yellow</option>
-            <option value="Green">green</option>
-            <option value="Gray">gray</option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Green">Green</option>
+            <option value="Gray">Gray</option>
           </select>
         </div>
 
@@ -277,7 +277,7 @@ function Form() {
             <option value="coupe">Coupe</option>
             <option value="sedan">Sedan</option>
             <option value="convertible">Convertible</option>
-            <option value="suv">Suv</option>
+            <option value="suv">SUV</option>
           </select>
         </div>
 
@@ -286,7 +286,7 @@ function Form() {
           <select onChange={getUserPreferences} id="fuel" name="fuel">
             <option disabled selected value=""></option>
             <option value="electrical">Yes, of course</option>
-            <option value="petrol">Not really</option>
+            <option value="petrol">Not, really</option>
           </select>
         </div>
 
@@ -341,7 +341,7 @@ function Form() {
       {mood && (
         <div>
           <h2 class="standard-text">
-            Our AI has defined that the best match for you
+          Based on your preferences and our smart analytics tool you should purchase
           </h2>
           <CarCard
             image={suggestedCar.image}
