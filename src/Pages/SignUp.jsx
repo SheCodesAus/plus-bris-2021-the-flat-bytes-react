@@ -57,9 +57,6 @@ function SignUpPage() {
 
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <form class="container">
       <div class="form-field">
           <label htmlFor="First name"></label>

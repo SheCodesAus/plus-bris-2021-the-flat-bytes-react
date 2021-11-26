@@ -8,9 +8,6 @@ function WelcomePage() {
   };
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <div class="standard-text">
         <p>Welcome to Luxe,</p>
         <p>your AI shopping assistant.</p><br/>

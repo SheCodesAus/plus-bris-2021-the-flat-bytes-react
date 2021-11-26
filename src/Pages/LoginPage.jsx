@@ -51,9 +51,6 @@ function LoginPage() {
   
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <form class="container">
         <div>
           <input

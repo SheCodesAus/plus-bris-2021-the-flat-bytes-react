@@ -4,7 +4,6 @@ const PageNotFound = () => {
   return (
     <div id="error">
       <p id="error-text">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
         <br />
         Our apologies, this is almost certainly not the page you were looking
         for.

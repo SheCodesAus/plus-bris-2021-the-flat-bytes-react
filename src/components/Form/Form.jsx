@@ -237,9 +237,6 @@ function Form() {
 
   return (
     <div id="form-page">
-      <div id="img-div">
-        <img id="banner-small" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <div id="form-wrapper">
       <form onSubmit={handleSubmit}>
         <div class="container select-container">
