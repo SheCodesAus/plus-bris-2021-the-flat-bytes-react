@@ -24,20 +24,6 @@ function Form() {
 
   //show a recommendation based on the mood
 
-  ///////////////////////////////////////////////Kristy
-
-  const saveFavourite = (e) => {
-    //for checkbox onclick, submit 'true' value
-    const { id, value } = e.target;
-    setSuggestedCar((prevsuggestedCar) => ({
-      ...prevsuggestedCar,
-      [id]: !prevsuggestedCar[id],
-    }));
-  };
-  //storedata
-  //  Post data to userprofile page
-  ////////////////////////////////////////////Kristy
-
   const handleMoodQuestion = (e) => {
     const moodOptions = [
       {
@@ -384,16 +370,6 @@ function Form() {
             body_type={suggestedCar.body_type}
             url={suggestedCar.url}
           />
-          <div>
-            <label htmlFor="suggestedCar.favourite">Favourite: </label>
-            <input
-              type="checkbox"
-              id="favourite"
-              placeholder="Save to Favourites"
-              onClick={saveFavourite}
-              value={suggestedCar.favourite}
-            />
-          </div>
         </div>
       )}
     </div>
