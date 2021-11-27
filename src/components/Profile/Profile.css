@@ -1,0 +1,14 @@
+button.profile-button {
+  width: 100%;
+  color: white;
+  background-color: black;
+  margin: 1mm;
+}
+
+button.profile-button:hover,
+button.profile-button:active {
+  background-image: linear-gradient(to bottom right, white, rgb(153, 149, 149));
+  color: black;
+  border-color: #090909;
+  cursor: pointer;
+}

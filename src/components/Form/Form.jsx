@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 //components
 import CarCard from "../CarCard/CarCard.jsx";
@@ -9,17 +10,17 @@ function Form() {
     price: "",
     body_type: "",
     fuel: "",
+    favourite: false,
+    //Todo:create favourite field.
+    //if 'save to favourites' is clicked this is set to true
+    //create if loop in favourites form - if favourite=true, display on page
   });
 
-  
-
-
+  const navigate = useNavigate();
   const [mood, setMood] = useState("");
   const [bestCarMatches, setBestCarMatches] = useState([]);
   const [carsFromAPI, setCarsFromApi] = useState([]);
   const [carsOptions, setCarsOptions] = useState([]);
-
-  
 
   //show a recommendation based on the mood
 
@@ -36,8 +37,9 @@ function Form() {
         url: "https://www.whichcar.com.au/reviews/2017-ferrari-gtc4-lusso-targa-tasmania-review",
         image:
           "https://i.pinimg.com/564x/6f/3f/43/6f3f432b58ffd3a57d9123eb7ac5b6c0.jpg",
+        favourite: false,
       },
-   
+
       {
         make: "Bentley",
         model: "Mulsanne Speed",
@@ -49,6 +51,7 @@ function Form() {
         url: "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
         image:
           "https://www.lamborghinigoldcoast.com/imagetag/7802/2/l/New-2019-Bentley-Mulsanne-Speed-Speed-1563822913.jpg",
+        favourite: false,
       },
       {
         make: "Rolls-Royce",
@@ -61,6 +64,7 @@ function Form() {
         image:
           "https://assets.whichcar.com.au/image/upload/s--oTBFlRAO--/ar_2.304921968787515,c_fill,f_auto,q_auto:good/c_scale,w_2048/v1/archive/wheels/2015/04/02/34553/RR-Ghost-005.jpg",
         fuel: "petrol",
+        favourite: false,
       },
       {
         make: "Porsche",
@@ -73,6 +77,7 @@ function Form() {
         url: "https://www.wallpaperflare.com/grey-luxury-car-porsche-911-gt2-rs-2018-4k-wallpaper-175215",
         image:
           "https://c4.wallpaperflare.com/wallpaper/356/622/428/porsche-911-gt2-rs-2018-4k-wallpaper-preview.jpg",
+        favourite: false,
       },
     ];
     const answersMood = ["happy", "sad", "tired", "cheerful"];
@@ -238,12 +243,67 @@ function Form() {
   return (
     <div id="form-page">
       <div id="form-wrapper">
-      <form onSubmit={handleSubmit}>
-        <div class="container select-container">
-          <div class="form-intro">
-            <h1>Answer these few questions and our AI  <br/>
-          will determine the best purchase for you</h1>
+        <form onSubmit={handleSubmit}>
+          <div class="container select-container">
+            <div class="form-intro">
+              <h1>
+                Answer these few questions and our AI <br />
+                will determine the best purchase for you
+              </h1>
+            </div>
+            <label class="form-input standard-text">
+              How much money are you willing to spend?
+            </label>
+            <select onClick={getUserPreferences} id="price" name="price">
+              <option disabled selected value=""></option>
+              <option value="50.0-429.0">$50.0-430.000</option>
+              <option value="431.0-620.0">$450.000-620.000</option>
+              <option value="621.0-999.0">$620.000-999.000</option>
+            </select>
           </div>
+          <div class="container select-container">
+            <label class="form-input standard-text">
+              What color do you prefer?
+            </label>
+            <select onChange={getUserPreferences} id="colour" name="colour">
+              <option disabled selected value=""></option>
+              <option value="Black">black</option>
+              <option value="White">white</option>
+              <option value="Blue">blue</option>
+              <option value="Red">red</option>
+              <option value="Yellow">yellow</option>
+              <option value="Green">green</option>
+              <option value="Gray">gray</option>
+            </select>
+          </div>
+<<<<<<< HEAD
+
+          <div class="container select-container">
+            <label class="form-input standard-text">
+              In what body type do you feel most comfortable?
+            </label>
+            <select
+              onChange={getUserPreferences}
+              id="body_type"
+              name="body_type"
+            >
+              <option disabled selected value=""></option>
+              <option value="coupe">Coupe</option>
+              <option value="sedan">Sedan</option>
+              <option value="convertible">Convertible</option>
+              <option value="suv">Suv</option>
+            </select>
+          </div>
+
+          <div class="container select-container">
+            <label class="form-input standard-text">Do you love nature?</label>
+            <select onChange={getUserPreferences} id="fuel" name="fuel">
+              <option disabled selected value=""></option>
+              <option value="electrical">Yes, of course</option>
+              <option value="petrol">Not really</option>
+            </select>
+          </div>
+=======
           <label class="form-input standard-text">
             How much money are you willing to spend?
           </label>
@@ -289,35 +349,38 @@ function Form() {
             <option value="petrol">Not, really</option>
           </select>
         </div>
+>>>>>>> da24b4f8358dad627c6a68eeecc4cf3bef3b8b3c
 
-        <div class="container select-container">
-          <label class="form-input standard-text">How are you feeling today?</label>
-          <select
-            value={mood}
-            onChange={(e) => setMood(e.target.value)}
-            onClick={handleMoodQuestion}
-            id="mood"
-            name="mood"
-          >
-            <option disabled selected value=""></option>
-            <option onClick={handleMoodQuestion} value="happy">
-              I'm on top of the things
-            </option>
-            <option onClick={handleMoodQuestion} value="sad">
-              It could be better
-            </option>
-            <option onClick={handleMoodQuestion} value="tired">
-              I am tired and not in the mood today
-            </option>
-            <option onClick={handleMoodQuestion} value="cheerful">
-              I am smiling and happy today!
-            </option>
-          </select>
-        </div>
-        <div class="submit-container container">
-          <button type="submit">Help me choose</button>
-        </div>
-      </form>
+          <div class="container select-container">
+            <label class="form-input standard-text">
+              How are you feeling today?
+            </label>
+            <select
+              value={mood}
+              onChange={(e) => setMood(e.target.value)}
+              onClick={handleMoodQuestion}
+              id="mood"
+              name="mood"
+            >
+              <option disabled selected value=""></option>
+              <option onClick={handleMoodQuestion} value="happy">
+                I'm on top of the things
+              </option>
+              <option onClick={handleMoodQuestion} value="sad">
+                It could be better
+              </option>
+              <option onClick={handleMoodQuestion} value="tired">
+                I am tired and not in the mood today
+              </option>
+              <option onClick={handleMoodQuestion} value="cheerful">
+                I am smiling and happy today!
+              </option>
+            </select>
+          </div>
+          <div class="submit-container container">
+            <button type="submit">Help me choose</button>
+          </div>
+        </form>
       </div>
       <h1 class="standard-text">Best Car Matches:</h1>
       {!bestCarMatches.length && (
