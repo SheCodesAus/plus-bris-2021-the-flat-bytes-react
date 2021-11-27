@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  const navigate = useNavigate
+  const navigate = useNavigate()
   const goHome = () => {
     navigate("/home")
   }
@@ -49,7 +49,7 @@ function SignUpPage() {
     console.log("Trying to submit")
     e.preventDefault();
     postData().then((response) => {
-      
+      navigate("/login")
       console.log("Response from API------", response)
     });
     
@@ -82,6 +82,7 @@ function SignUpPage() {
           <input
             type="text"
             id="username"
+            name="username"
             placeholder="Username"
             onChange={handleChange}
           />
@@ -92,6 +93,7 @@ function SignUpPage() {
           <input
             type="email"
             id="email"
+            name="email"
             placeholder="Email"
             onChange={handleChange}
           />
@@ -101,6 +103,7 @@ function SignUpPage() {
           <input
             type="password"
             id="password"
+            name="password"
             placeholder="Password"
             onChange={handleChange}
           />
