@@ -116,7 +116,8 @@ a:visited {
   margin-top: 15%;
 }
 
-input#name,
+input#first_name,
+input#last_name,
 input#email,
 input#username,
 input#password {
