@@ -1,9 +1,15 @@
 import React from "react";
 import "./CarCard.css";
+import { useNavigate } from "react-router-dom";
 
 // Pass a suggested car or "best match" car
-function CarCard({ image, make, car_model, price, colour, body_type, url}) {
-  
+function CarCard({ image, make, car_model, price, colour, body_type, url }) {
+  const navigate = useNavigate();
+
+  const saveFavourite = () => {
+    navigate("/profile");
+  };
+
   return (
     <div className="car-card">
       <img alt="" src={image} />

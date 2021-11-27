@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
 
 #car-list {
   display: grid;
@@ -140,6 +141,7 @@ select {
   height: 5vh;
 }
 
+select,
 option {
   font-family: "Montserrat", sans-serif;
 }

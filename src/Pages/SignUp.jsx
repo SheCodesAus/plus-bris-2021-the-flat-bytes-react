@@ -28,9 +28,7 @@ function SignUpPage() {
   }
  
   const postData = async() => {
-
     
-    setUserDetails(initialDetails)
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}users/`, 
       {
@@ -41,7 +39,7 @@ function SignUpPage() {
         body: JSON.stringify(userDetails)
       }
     );
-    
+    console.log("The response from API-------", response)
     return response.json();
   }
 
@@ -49,7 +47,7 @@ function SignUpPage() {
     console.log("Trying to submit")
     e.preventDefault();
     postData().then((response) => {
-      navigate("/login")
+      navigate('/login')
       console.log("Response from API------", response)
     });
     
