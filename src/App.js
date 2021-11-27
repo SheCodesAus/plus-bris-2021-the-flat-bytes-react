@@ -11,9 +11,8 @@ import SignUpPage from "./Pages/SignUp";
 import PageNotFound from "./Pages/NotFound";
 import ProfilePage from "./Pages/ProfilePage";
 
-
 function App() {
-  const [authenticated,setAuthenticated]=useState(true)
+  // const [authenticated,setAuthenticated]=useState(true)
   return (
   <Router>
     <Header />
