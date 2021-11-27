@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
@@ -46,9 +46,6 @@ function LoginPage() {
 
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <form class="container">
         <div>
           <input
@@ -69,7 +66,7 @@ function LoginPage() {
         </div>
       </form>
       <div class="button-container container">
-        <button onClick={doLogin}>LOGIN</button>
+        <button onClick={handleSubmit}>LOGIN</button>
         <p>or</p>
         <button onClick={signUp}>SIGN UP</button>
       </div>

@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
+
+#headerlogo {
+    display: block;
+    max-width:20vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.neon {
+    text-align:center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color: #ffffff;
+    text-shadow:
+      0 0 5px #ffffff,
+      0 0 10px #fff,
+      0 0 20px #fff,
+      0 0 40px #ffbd59,
+      0 0 80px #ffbd59,
+      0 0 90px #ffbd59,
+      0 0 100px #ffbd59,
+      0 0 150px #ffbd59;
+  }
+  

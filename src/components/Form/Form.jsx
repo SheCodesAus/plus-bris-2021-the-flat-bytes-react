@@ -242,9 +242,6 @@ function Form() {
 
   return (
     <div id="form-page">
-      <div id="img-div">
-        <img id="banner-small" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <div id="form-wrapper">
         <form onSubmit={handleSubmit}>
           <div class="container select-container">
@@ -279,6 +276,7 @@ function Form() {
               <option value="Gray">gray</option>
             </select>
           </div>
+<<<<<<< HEAD
 
           <div class="container select-container">
             <label class="form-input standard-text">
@@ -305,6 +303,53 @@ function Form() {
               <option value="petrol">Not really</option>
             </select>
           </div>
+=======
+          <label class="form-input standard-text">
+            How much money are you willing to spend?
+          </label>
+          <select onClick={getUserPreferences} id="price" name="price">
+            <option disabled selected value=""></option>
+            <option value="50.0-429.0">$50.000-$430.000</option>
+            <option value="431.0-620.0">$450.000-$620.000</option>
+            <option value="621.0-999.0">$620.000-$999.000</option>
+          </select>
+        </div>
+        <div class="container select-container">
+          <label class="form-input standard-text">What color do you prefer?</label>
+          <select onChange={getUserPreferences} id="colour" name="colour">
+            <option disabled selected value=""></option>
+            <option value="Black">Black</option>
+            <option value="White">White</option>
+            <option value="Blue">Blue</option>
+            <option value="Red">Red</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Green">Green</option>
+            <option value="Gray">Gray</option>
+          </select>
+        </div>
+
+        <div class="container select-container">
+          <label class="form-input standard-text">
+            In what body type do you feel most comfortable?
+          </label>
+          <select onChange={getUserPreferences} id="body_type" name="body_type">
+            <option disabled selected value=""></option>
+            <option value="coupe">Coupe</option>
+            <option value="sedan">Sedan</option>
+            <option value="convertible">Convertible</option>
+            <option value="suv">SUV</option>
+          </select>
+        </div>
+
+        <div class="container select-container">
+          <label class="form-input standard-text">Do you love nature?</label>
+          <select onChange={getUserPreferences} id="fuel" name="fuel">
+            <option disabled selected value=""></option>
+            <option value="electrical">Yes, of course</option>
+            <option value="petrol">Not, really</option>
+          </select>
+        </div>
+>>>>>>> da24b4f8358dad627c6a68eeecc4cf3bef3b8b3c
 
           <div class="container select-container">
             <label class="form-input standard-text">
@@ -359,7 +404,7 @@ function Form() {
       {mood && (
         <div>
           <h2 class="standard-text">
-            Our AI has defined that the best match for you
+          Based on your preferences and our smart analytics tool you should purchase
           </h2>
           <CarCard
             image={suggestedCar.image}

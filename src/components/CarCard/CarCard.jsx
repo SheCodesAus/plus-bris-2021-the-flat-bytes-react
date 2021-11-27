@@ -13,7 +13,7 @@ function CarCard({ image, make, car_model, price, colour, body_type, url }) {
   return (
     <div className="car-card">
       <img alt="" src={image} />
-      <h3>This your best match car</h3>
+      
       <h3>Car make: {make}</h3>
       <h3>Car model: {car_model}</h3>
       <h3>Car price: $ {price}</h3>

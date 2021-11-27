@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link, BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header"
 import Nav from "./components/Nav/Nav";
 import HomePage from "./Pages/HomePage";
 import CarDetailPage from "./Pages/CarDetailPage";
@@ -12,9 +13,11 @@ import ProfilePage from "./Pages/ProfilePage";
 
 
 function App() {
+  const [authenticated,setAuthenticated]=useState(true)
   return (
   <Router>
-    <div id="background">
+    <Header />
+    <div>
    {/* <Nav />  #need to place this so it only shows after user login */}
       <Routes>
         <Route path="/" element={<WelcomePage/>} />
@@ -26,6 +29,9 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
+   {/* {authenticated && <Nav />} */}
+   
+
   </Router>
   );
 }

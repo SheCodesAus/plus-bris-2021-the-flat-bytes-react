@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
 
 #car-list {
   display: grid;
@@ -19,6 +20,11 @@
   height: 15%;
 }
 
+#error {
+  display: flex;
+  justify-content: center;
+}
+
 #error-text {
   display: block;
   margin: auto;
@@ -34,6 +40,7 @@
   margin: auto;
   text-align: center;
   margin-top: 10%;
+  width: 100%;
   color: white;
   font-weight: 200;
   font-family: "Montserrat", sans-serif;
@@ -68,7 +75,6 @@ h1 {
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-top: 10%;
 }
 
 .button {
@@ -116,8 +122,8 @@ a:visited {
   margin-top: 15%;
 }
 
-input#first_name,
 input#last_name,
+input#first_name,
 input#email,
 input#username,
 input#password {
@@ -133,12 +139,15 @@ input#password {
 select {
   width: 40%;
   height: 5vh;
-  text-align-last: center;
 }
 
 select,
 option {
   font-family: "Montserrat", sans-serif;
+}
+
+select.decorated option:hover {
+  box-shadow: 0 0 10px 100px #fbbf64 inset;
   color: #090909;
 }
 
