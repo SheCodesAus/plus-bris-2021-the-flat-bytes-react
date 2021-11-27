@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function SignUpPage() {
-  const navigate = useNavigate();
+  const navigate = useNavigate
   const goHome = () => {
     navigate("/home")
   }
@@ -24,7 +24,7 @@ function SignUpPage() {
         [id]: value,
       }
     });
-    
+    console.log(userDetails)
   }
  
   const postData = async() => {
@@ -46,19 +46,17 @@ function SignUpPage() {
   }
 
   const handleSubmit = (e) => {
+    console.log("Trying to submit")
     e.preventDefault();
     postData().then((response) => {
-    navigate("/login")  
       
+      console.log("Response from API------", response)
     });
     
   };
 
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <form class="container">
       <div class="form-field">
           <label htmlFor="First name"></label>

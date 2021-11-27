@@ -1,15 +1,8 @@
-import React, { useState } from "react";
+import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const doLogin = () => {
-    navigate("/home");
-  };
-  const signUp = () => {
-    navigate("/signup");
-  };
-
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -21,7 +14,6 @@ function LoginPage() {
       ...prevCredentials,
       [id]: value,
     }));
-   
   };
 
   const postData = async () => {
@@ -38,21 +30,22 @@ function LoginPage() {
     return response.json();
   };
 
-  const handleSubmit = (e) => {
+  const doLogin = (e) => {
     e.preventDefault();
     if (credentials.username && credentials.password) {
       postData().then((response) => {
         window.localStorage.setItem("token", response.token);
         navigate("/home");
-        
       });
     }
   };
+
+  const signUp = () => {
+    navigate("/signup");
+  };
+
   return (
     <div>
-      <div id="img-div">
-        <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-      </div>
       <form class="container">
         <div>
           <input
@@ -73,7 +66,7 @@ function LoginPage() {
         </div>
       </form>
       <div class="button-container container">
-        <button onClick={handleSubmit}>LOGIN</button>
+        <button onClick={doLogin}>LOGIN</button>
         <p>or</p>
         <button onClick={signUp}>SIGN UP</button>
       </div>

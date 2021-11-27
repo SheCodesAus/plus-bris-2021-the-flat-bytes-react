@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Open+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
 
 #car-list {
   display: grid;
@@ -20,8 +21,8 @@
 }
 
 #error {
-display: flex ;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 #error-text {
@@ -48,16 +49,16 @@ justify-content: center;
 }
 
 .form-input.standard-text {
-  margin:5%;;
-  text-align:center;
+  margin: 5%;
+  text-align: center;
 }
-
 
 #login-title {
   margin-top: 5%;
 }
 
-h1, p {
+h1,
+p {
   font-weight: 200;
   color: #ffffff;
 }
@@ -74,7 +75,6 @@ h1 {
   display: flex;
   justify-content: center;
   margin: auto;
-  margin-top: 10%;
 }
 
 .button {
@@ -83,8 +83,9 @@ h1 {
   margin: 5%;
 }
 
-button:hover, button:active {
-  background-image: linear-gradient(to bottom right, white , #fbbf64);  
+button:hover,
+button:active {
+  background-image: linear-gradient(to bottom right, white, #fbbf64);
   color: #090909;
   border-color: #090909;
   cursor: pointer;
@@ -117,13 +118,15 @@ a:visited {
   flex-direction: column;
 }
 
-
 .submit-container.container {
-  margin-top: 15%;;
+  margin-top: 15%;
 }
 
-
-input#name, input#email,input#username, input#password {
+input#last_name,
+input#first_name,
+input#email,
+input#username,
+input#password {
   padding: 2%;
   text-align: center;
   font-family: "Montserrat", sans-serif;
@@ -138,17 +141,18 @@ select {
   height: 5vh;
 }
 
+select,
 option {
   font-family: "Montserrat", sans-serif;
 }
 
 select.decorated option:hover {
   box-shadow: 0 0 10px 100px #fbbf64 inset;
-  color: #090909
+  color: #090909;
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 768px) {
   #img-div {
     margin-top: 5%;
   }
@@ -158,18 +162,18 @@ select.decorated option:hover {
   }
   .form-input.standard-text {
     margin: 2%;
-    text-align:center;
+    text-align: center;
   }
   .submit-container.container {
-    margin: 8% 0% 5% 0%;;
+    margin: 8% 0% 5% 0%;
   }
   .container.select-container {
-    margin-top: 3%;;
+    margin-top: 3%;
   }
 }
 
 /* Large devices (laptops/desktops, 992px and up */
-@media only screen and (min-width: 992px){
+@media only screen and (min-width: 992px) {
   #img-div {
     margin-top: 2%;
   }
@@ -189,9 +193,10 @@ select.decorated option:hover {
     margin: 0% 1% 0% 1%;
   }
   .container {
-    margin-top:0%;
+    margin-top: 0%;
   }
-  .button-container.container, .submit-container.container{
+  .button-container.container,
+  .submit-container.container {
     display: flex;
     flex-direction: row;
     margin-top: 3%;
@@ -201,7 +206,6 @@ select.decorated option:hover {
 /* extra-large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .container.select-container {
-    margin-top: 1%;;
+    margin-top: 1%;
   }
 }
-
