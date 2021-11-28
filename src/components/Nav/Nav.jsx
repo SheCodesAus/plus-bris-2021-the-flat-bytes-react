@@ -17,7 +17,7 @@ function Nav() {
         <img src={IconLogo} alt="" />
       </ul>
       <ul>
-        <Link to="/home">
+        <Link to="/profilepage">
           <img src={IconUser} alt="" />
         </Link>
       </ul>

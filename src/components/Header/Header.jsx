@@ -5,12 +5,15 @@ import IconLogo from "../../assets/Luxe_Icon.png";
 import Nav from "../Nav/Nav";
 
 function Header() {
-    <Nav />
+   
     return(
+        <><section>
+            <Nav />
+        </section>
         <Link className="header" to="/">
-            <img id="headerlogo" src={IconLogo} alt="logo" />
-            <h1 class="neon">L U X E</h1>
-        </Link>
+                <img id="headerlogo" src={IconLogo} alt="logo" />
+                <h1 class="neon">L U X E</h1>
+            </Link></>
     );
 }
 
