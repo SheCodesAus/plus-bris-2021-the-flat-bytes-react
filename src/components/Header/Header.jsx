@@ -8,15 +8,18 @@ function Header() {
    
     return(
         <><section>
-            <Nav />
-        </section>
-
-        <section>
+            <section id="header">
             <Link className="header" to="/">
-                    <img id="headerlogo" src={IconLogo} alt="logo" />
-                    <h1 class="neon">L U X E</h1>
+                    <ul><img id="headerlogo" src={IconLogo} alt="logo" /></ul>
+                   <ul><h1 class="neon">L U X E</h1></ul>
             </Link>
+            </section>
+        
+            <section>
+            <Nav />
+            </section>
         </section></>
+
     );
 }
 

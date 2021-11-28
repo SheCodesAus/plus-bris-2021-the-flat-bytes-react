@@ -40,9 +40,6 @@ const Profile = () => {
         ))}
       </ul>
       ); */}
-        <div id="img-div">
-          <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-        </div>
         <h3 class="standard-text">Welcome to your page.</h3>
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...

@@ -7,7 +7,7 @@ import IconUser from "../../assets/Luxe_User.png";
 
 function Nav() {
   return (
-    <nav className="nav_component">
+    <nav class="nav_component">
       <ul>
         <Link to="/home">
           <img src={IconHome} alt="" />
