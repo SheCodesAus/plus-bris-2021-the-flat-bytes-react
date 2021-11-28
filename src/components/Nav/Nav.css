@@ -1,15 +1,15 @@
 .nav_component {
+    position: relative;
+    background-color: #090909;
+    
+    /* nav at bottom -always*/
+    /* display: flex;
+    position: fixed;
     background-color: #090909;
     width: 100%;
-    position: fixed;
     bottom: 0;
-    display: flex;
     justify-content: space-between;
-    align-content: center;
-}
-
-.nav_component img {
-    width: 30%;
+    align-content: center; */
 }
 
 ul {
@@ -20,3 +20,81 @@ ul {
     /* float: center; */
 }
 
+/* small devices/default */
+@media only screen and (max-width: 767px) {
+    .nav_component { 
+    display: flex;
+    position: fixed;
+    background-color: #090909;
+    width: 100%;
+    bottom: 0;
+    justify-content: space-between;
+    align-content: center;
+    }
+    .nav_component img {
+    width: 30%;
+    }
+
+    .nav_component p {
+    display: none;
+    }
+}
+  
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .nav_component img {
+    max-width: 15vw;
+    
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .nav_component { 
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        justify-content: space-between;
+        align-content: center;
+        max-height: 20vw;
+        width: 100%;
+        }  
+        .nav_component img {
+            max-width: 15vw;
+            }   
+}
+
+
+  
+/* navigation img hidden, text nav only */
+  /* Large devices (laptops/desktops, 992px and up */
+  @media only screen and (min-width: 992px) {
+    .nav_component { 
+    float:right;
+    top:0px;
+    /* display: flex; */
+    /* position: relative; */
+    /* justify-content: space-between; */
+    /* align-content: center; */
+    }
+    .nav_component img {
+    /* max-width: 10vw; */
+    display: none;
+    }
+
+  }
+
+  
+  /* extra-large devices (large laptops and desktops, 1200px and up) */
+  /* @media only screen and (min-width: 1200px) {
+        .nav_component { 
+        display: flex;
+        position: fixed;
+        justify-content: space-between;
+        align-content: center;
+        }
+        .nav_component img {
+        display: none;
+        }
+    
+} */
