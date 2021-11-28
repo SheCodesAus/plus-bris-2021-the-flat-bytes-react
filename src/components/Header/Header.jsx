@@ -10,10 +10,13 @@ function Header() {
         <><section>
             <Nav />
         </section>
-        <Link className="header" to="/">
-                <img id="headerlogo" src={IconLogo} alt="logo" />
-                <h1 class="neon">L U X E</h1>
-            </Link></>
+
+        <section>
+            <Link className="header" to="/">
+                    <img id="headerlogo" src={IconLogo} alt="logo" />
+                    <h1 class="neon">L U X E</h1>
+            </Link>
+        </section></>
     );
 }
 
