@@ -81,8 +81,7 @@ function Form() {
       },
     ];
     const answersMood = ["happy", "sad", "tired", "cheerful"];
-    console.log("This is e!!!!!", mood)
-    if (mood === answersMood[0]) {
+    if (e.target.value === answersMood[0]) {
       console.log(
         "Your answer is",
         answersMood[0],
@@ -91,7 +90,7 @@ function Form() {
       );
       setSuggestedCar(moodOptions[0]);
     }
-    if (mood === answersMood[1]) {
+    if (e.target.value === answersMood[1]) {
       console.log(
         "Your answer is",
         answersMood[1],
@@ -100,7 +99,7 @@ function Form() {
       );
       setSuggestedCar(moodOptions[1]);
     }
-    if (mood === answersMood[2]) {
+    if (e.target.value === answersMood[2]) {
       console.log(
         "Your answer is",
         answersMood[2],
@@ -109,7 +108,7 @@ function Form() {
       );
       setSuggestedCar(moodOptions[2]);
     }
-    if (mood === answersMood[3]) {
+    if (e.target.value === answersMood[3]) {
       console.log(
         "Your answer is",
         answersMood[3],
@@ -161,10 +160,10 @@ function Form() {
       console.log("By body", filteredCars);
     }
 
-    // if (suggestedCar.fuel !== "") {
-    //   filteredCars = matchingFuel(filteredCars);
-    //   console.log("By fuel", filteredCars);
-    // }
+    if (suggestedCar.fuel !== "") {
+      filteredCars = matchingFuel(filteredCars);
+      console.log("By fuel", filteredCars);
+    }
     console.log("The filtered cars", filteredCars);
     setBestCarMatches(filteredCars);
     return filteredCars;
@@ -221,20 +220,19 @@ function Form() {
     });
   }
 
-  // function matchingFuel(cars) {
-  //   return cars.filter((car) => {
-  //     if (car.fuel !== suggestedCar.fuel) {
-  //       return false;
-  //     }
-  //     return true;
-  //   });
-  // }
+  function matchingFuel(cars) {
+    return cars.filter((car) => {
+      if (car.fuel !== suggestedCar.fuel) {
+        return false;
+      }
+      return true;
+    });
+  }
 
   //submit the form
   function handleSubmit(e) {
     e.preventDefault();
     const result = matchingCars(e);
-    handleMoodQuestion()
 
     //setbestCarMatches(result)
     return result;
@@ -258,7 +256,7 @@ function Form() {
             </label>
             <select onClick={getUserPreferences} id="price" name="price">
               <option disabled selected value=""></option>
-              <option value="50.0-429.0">$50.0000-430.000</option>
+              <option value="50.0-429.0">$50.0-430.000</option>
               <option value="431.0-620.0">$450.000-620.000</option>
               <option value="621.0-999.0">$620.000-999.000</option>
             </select>
@@ -292,18 +290,18 @@ function Form() {
               <option value="coupe">Coupe</option>
               <option value="sedan">Sedan</option>
               <option value="convertible">Convertible</option>
-              <option value="SUV">SUV</option>
+              <option value="suv">Suv</option>
             </select>
           </div>
 
-          {/* <div class="container select-container">
+          <div class="container select-container">
             <label class="form-input standard-text">Do you love nature?</label>
             <select onChange={getUserPreferences} id="fuel" name="fuel">
               <option disabled selected value=""></option>
               <option value="electrical">Yes, of course</option>
               <option value="petrol">Not really</option>
             </select>
-          </div> */}
+          </div>
 
           <div class="container select-container">
             <label class="form-input standard-text">
@@ -312,7 +310,7 @@ function Form() {
             <select
               value={mood}
               onChange={(e) => setMood(e.target.value)}
-              //onClick={handleMoodQuestion}
+              onClick={handleMoodQuestion}
               id="mood"
               name="mood"
             >
