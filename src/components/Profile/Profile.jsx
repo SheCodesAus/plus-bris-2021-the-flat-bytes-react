@@ -1,48 +1,19 @@
 import React from "react";
 import "./Profile.css";
-import Form from "../Form/Form";
+import UpdateUser from "../UpdateUser/UpdateUser";
 import { useNavigate } from "react-router-dom";
-
-const initialPreferences = [];
+import DeleteUser from "../DeleteUser/DeleteUser";
 
 const Profile = () => {
-  const [Preferences, setPreferences] = React.useState(initialPreferences);
-  const [name, setName] = React.useState("");
   const navigate = useNavigate();
 
   const addCar = () => {
     navigate("/home");
   };
 
-  function handleChange(event) {
-    setName(event.target.value);
-  }
-
-  function handleAdd() {
-    const updatedPreferences = Preferences.concat({ name });
-
-    setPreferences(updatedPreferences);
-  }
-
   return (
     <div>
       <div>
-        {/* <input type="text" value={name} onChange={handleChange} />
-          {/* <button type="button" onClick={handleAdd}>
-            Add
-          </button> */}
-        {/* <div>{Preferences}</div> */}
-        {/* </div>
-      </div>
-      <ul>
-        {Preferences.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-      ); */}
-        <div id="img-div">
-          <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
-        </div>
         <h3 class="standard-text">Welcome to your page.</h3>
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
@@ -60,6 +31,23 @@ const Profile = () => {
           <button class="profile-button"> Holiday Homes </button>
           <button class="profile-button"> Yachts </button>
           <button class="profile-button"> Private Jets </button>
+        </div>
+        <h3 class="standard-text" style={{ marginTop: "5%" }}>
+          You are currently Logged in. Delete or Update your account here:
+        </h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "5%",
+          }}
+        >
+          <button type="submit" onClick={DeleteUser}>
+            Delete Account
+          </button>
+          <button type="submit" onClick={UpdateUser}>
+            Update Account
+          </button>
         </div>
       </div>
     </div>
