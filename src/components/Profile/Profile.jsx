@@ -3,43 +3,16 @@ import "./Profile.css";
 import Form from "../Form/Form";
 import { useNavigate } from "react-router-dom";
 
-const initialPreferences = [];
-
 const Profile = () => {
-  const [Preferences, setPreferences] = React.useState(initialPreferences);
-  const [name, setName] = React.useState("");
   const navigate = useNavigate();
 
   const addCar = () => {
     navigate("/home");
   };
 
-  function handleChange(event) {
-    setName(event.target.value);
-  }
-
-  function handleAdd() {
-    const updatedPreferences = Preferences.concat({ name });
-
-    setPreferences(updatedPreferences);
-  }
-
   return (
     <div>
       <div>
-        {/* <input type="text" value={name} onChange={handleChange} />
-          {/* <button type="button" onClick={handleAdd}>
-            Add
-          </button> */}
-        {/* <div>{Preferences}</div> */}
-        {/* </div>
-      </div>
-      <ul>
-        {Preferences.map((item) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-      ); */}
         <h3 class="standard-text">Welcome to your page.</h3>
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...

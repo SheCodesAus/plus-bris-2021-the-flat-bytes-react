@@ -16,10 +16,16 @@ function CarCard({ image, make, car_model, price, colour, body_type, url }) {
       
       <h3>Make: {make}</h3>
       <h3>Model: {car_model}</h3>
-      <h3>Price: $ {price}</h3>
+      <h3>Price: $ {price.toFixed(3)}</h3>
       <h3>Color: {colour}</h3>
-      <h3>Body type: {body_type}</h3>
-      <h3>More details here:  <a href={url} target="_blank">car details</a></h3>
+      <h3>Body Type: {body_type}</h3>
+      <h3>More details here:  <a href={url} target="_blank"> Car details</a></h3>
+
+
+    <br/>
+    <br/>
+    <br/>
+    <br/>
     </div>
   );
 }

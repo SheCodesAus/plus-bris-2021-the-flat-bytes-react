@@ -28,7 +28,7 @@ function Form() {
     const moodOptions = [
       {
         make: "Ferrari",
-        model: "GTC4Lusso",
+        car_model: "GTC4Lusso",
         price: 575.0,
         engine: "6.3-litre V12",
         body_type: "coupe",
@@ -42,7 +42,7 @@ function Form() {
 
       {
         make: "Bentley",
-        model: "Mulsanne Speed",
+        car_model: "Mulsanne Speed",
         price: 455.5,
         engine: "6.8-litre Twin Turbo V8",
         body_type: "sedan",
@@ -55,7 +55,7 @@ function Form() {
       },
       {
         make: "Rolls-Royce",
-        model: "Ghost",
+        car_model: "Ghost",
         price: 755.0,
         engine: "6.7-litre V12",
         colour: "gray",
@@ -68,7 +68,7 @@ function Form() {
       },
       {
         make: "Porsche",
-        model: "911 GT2 RS",
+        car_model: "911 GT2 RS",
         price: 645.4,
         engine: "3.8 -litre twin-turbocharged flat-6",
         body_type: "coupe",
@@ -256,9 +256,9 @@ function Form() {
             </label>
             <select onClick={getUserPreferences} id="price" name="price">
               <option disabled selected value=""></option>
-              <option value="50.0-429.0">$50.0-430.000</option>
-              <option value="431.0-620.0">$450.000-620.000</option>
-              <option value="621.0-999.0">$620.000-999.000</option>
+              <option value="50.0-429.0">$50.000-$430.000</option>
+              <option value="431.0-620.0">$450.000-$620.000</option>
+              <option value="621.0-999.0">$620.000-$999.000</option>
             </select>
           </div>
           <div class="container select-container">
@@ -267,13 +267,13 @@ function Form() {
             </label>
             <select onChange={getUserPreferences} id="colour" name="colour">
               <option disabled selected value=""></option>
-              <option value="Black">black</option>
-              <option value="White">white</option>
-              <option value="Blue">blue</option>
-              <option value="Red">red</option>
-              <option value="Yellow">yellow</option>
-              <option value="Green">green</option>
-              <option value="Gray">gray</option>
+              <option value="Black">Black</option>
+              <option value="White">White</option>
+              <option value="Blue">Blue</option>
+              <option value="Red">Red</option>
+              <option value="Yellow">Yellow</option>
+              <option value="Green">Green</option>
+              <option value="Gray">Gray</option>
             </select>
           </div>
 
@@ -336,7 +336,7 @@ function Form() {
       </div>
       <h1 class="standard-text">Best Car Matches:</h1>
       {!bestCarMatches.length && (
-        <p class="standard-text">No car matches found.</p>
+        <p class="standard-text"></p>
       )}
       {bestCarMatches.length > 0 &&
         bestCarMatches.map((car) => {
