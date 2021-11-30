@@ -35,6 +35,7 @@ function SignUpPage() {
         method: "post",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(userDetails)
       }
