@@ -8,15 +8,14 @@ function DeleteUser() {
   });
   const { id } = useParams();
   const navigate = useNavigate();
-  const DeleteProject = async () => {
-    fetch(`${process.env.REACT_APP_API_URL}projects/${id}`, {
-      method: "delete",
-      headers: {
-        Authorization: `Token ${localStorage.getItem("token")}`,
-      },
-    });
-    history.push("/");
-  };
+
+  fetch(`${process.env.REACT_APP_API_URL}users/${id}`, {
+    method: "delete",
+    headers: {
+      Authorization: `Token ${localStorage.getItem("token")}`,
+    },
+  });
+  navigate("/");
 }
 
 export default DeleteUser;
