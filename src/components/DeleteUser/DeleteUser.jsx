@@ -16,6 +16,17 @@ function DeleteUser() {
     },
   });
   navigate("/");
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}users/${id}`)
+      .then((results) => {
+        console.log("results", results);
+        return results.json();
+      })
+      .then((data) => {
+        setCredentials(data);
+      });
+  }, []);
 }
 
 export default DeleteUser;
