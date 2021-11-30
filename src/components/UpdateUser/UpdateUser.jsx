@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
-function DeleteUser() {
+function UpdateUser() {
   const [Credentials, setCredentials] = useState({
     username: "",
     password: "",
@@ -10,12 +10,12 @@ function DeleteUser() {
   const navigate = useNavigate();
 
   fetch(`${process.env.REACT_APP_API_URL}users/${id}`, {
-    method: "delete",
+    method: "put",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
     },
   });
-  navigate("/");
+  navigate("/profile");
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${id}`)
@@ -29,4 +29,4 @@ function DeleteUser() {
   });
 }
 
-export default DeleteUser;
+export default UpdateUser;

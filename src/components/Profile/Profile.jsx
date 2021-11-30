@@ -1,7 +1,8 @@
 import React from "react";
 import "./Profile.css";
-import Form from "../Form/Form";
+import UpdateUser from "../UpdateUser/UpdateUser";
 import { useNavigate } from "react-router-dom";
+import DeleteUser from "../DeleteUser/DeleteUser";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -30,6 +31,23 @@ const Profile = () => {
           <button class="profile-button"> Holiday Homes </button>
           <button class="profile-button"> Yachts </button>
           <button class="profile-button"> Private Jets </button>
+        </div>
+        <h3 class="standard-text" style={{ marginTop: "5%" }}>
+          You are currently Logged in. Delete or Update your account here:
+        </h3>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginBottom: "5%",
+          }}
+        >
+          <button type="submit" onClick={DeleteUser}>
+            Delete Account
+          </button>
+          <button type="submit" onClick={UpdateUser}>
+            Update Account
+          </button>
         </div>
       </div>
     </div>
