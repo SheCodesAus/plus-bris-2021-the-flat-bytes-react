@@ -23,6 +23,7 @@ function LoginPage() {
         method: "post",
         headers: {
           "Content-Type": "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify(credentials),
       }
