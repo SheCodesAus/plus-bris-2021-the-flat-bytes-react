@@ -19,8 +19,8 @@ function Form() {
   const navigate = useNavigate();
   const [mood, setMood] = useState("");
   const [bestCarMatches, setBestCarMatches] = useState([]);
-  const [carsFromAPI, setCarsFromApi] = useState([]);
   const [carsOptions, setCarsOptions] = useState([]);
+  const [formFilled, setFormFilled] = useState(undefined);
 
   //show a recommendation based on the mood
 
@@ -134,7 +134,6 @@ function Form() {
     fetch(`${process.env.REACT_APP_API_URL}products/`)
       .then((results) => {
         console.log("results:", results);
-
         return results.json();
       })
       .then((data) => {
@@ -145,8 +144,8 @@ function Form() {
 
   //filter based on attributes
   const matchingCars = (e) => {
-    //filter by price
-    //pass my response from api
+  
+    //pass response from api
     let filteredCars = matchingPrice(carsOptions);
     console.log("the suggested cARS", suggestedCar);
 
@@ -235,13 +234,21 @@ function Form() {
     e.preventDefault();
     const result = matchingCars(e);
     handleMoodQuestion()
-
-    //setbestCarMatches(result)
+    setFormFilled(true);
     return result;
   }
 
-  // console.log("cars options", carsOptions);
-
+  if(!bestCarMatches.length && formFilled) {
+    return (
+      <div>
+        <p class="standard-text">There are no suitable cars for you at the moment. Try searching again</p>
+        <div class="submit-container container">
+          <button onClick={e => {setFormFilled(false)}}>Try again</button>
+        </div>
+      </div>
+    )
+  }
+  
   return (
     <div id="form-page">
       <div id="form-wrapper">
@@ -314,7 +321,6 @@ function Form() {
             <select
               value={mood}
               onChange={(e) => setMood(e.target.value)}
-              //onClick={handleMoodQuestion}
               id="mood"
               name="mood"
             >
@@ -338,13 +344,12 @@ function Form() {
           </div>
         </form>
       </div>
-      <h1 class="standard-text">Best Car Matches:</h1>
-      {!bestCarMatches.length && (
-        <p class="standard-text"></p>
-      )}
+      
       {bestCarMatches.length > 0 &&
         bestCarMatches.map((car) => {
           return (
+            <div>
+            <h1 class="standard-text">Best Car Matches:</h1>
             <CarCard
               image={car.image}
               make={car.make}
@@ -354,6 +359,7 @@ function Form() {
               body_type={car.body_type}
               url={car.url}
             />
+            </div>
           );
         })}
 
