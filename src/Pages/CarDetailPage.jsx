@@ -1,25 +1,40 @@
-import React from "react";
-import { oneProject } from "../data";
+// import { React, useState } from "react";
+// import { useNavigate, useParams } from "react-router-dom";
+// import CarCard from "../components/CarCard/CarCard";
+// import Form from "../components/Form/Form";
 
-function CarDetailPage() {
-  return (
-    <div>
-      <h2>{oneProject.title}</h2>
-      <h3>Created at: {oneProject.date_created}</h3>
-      <h3>{`Status: ${oneProject.is_open}`}</h3>
-      <h3>Ratings</h3>
-      <ul>
-        {oneProject.ratings.map((ratingData, key) => {
-          return (
-            <li>
-              {ratingData.supporter} gave a rating of {ratingData.rating}.{" "}
-              {ratingData.supporter} comment: "{ratingData.comment}"
-            </li>
-          );
-        })}
-      </ul>
-    </div>
-  );
-}
+// function CarDetailPage() {
+//   const [suggestedCar, setSuggestedCar] = useState({
+//     id,
+//     image,
+//     make,
+//     car_model,
+//     price,
+//     colour,
+//     body_type,
+//     url,
+//   });
+//   const { id } = useParams();
+//   const navigate = useNavigate();
 
-export default CarDetailPage;
+//   fetch(`${process.env.REACT_APP_API_URL}products/${id}`, {
+//     method: "get",
+//     headers: {
+//       Authorization: `Token ${localStorage.getItem("token")}`,
+//     },
+//   });
+//   navigate("/");
+
+//   return (
+//     <div>
+//       <h3>Car make: {make}</h3>
+//       <h3>Car model: {car_model}</h3>
+//       <h3>Car price: $ {price}</h3>
+//       <h3>Car color: {colour}</h3>
+//       <h3>Car body type: {body_type}</h3>
+//       <h3>More car details here: {url}</h3>
+//     </div>
+//   );
+// }
+
+// export default CarDetailPage;

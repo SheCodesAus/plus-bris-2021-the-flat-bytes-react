@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./CarCard.css";
 import { useNavigate } from "react-router-dom";
-import Profile from "../Profile/Profile";
 
 // Pass a suggested car or "best match" car
 function CarCard({
@@ -44,11 +43,12 @@ function CarCard({
   const [userList, setUserList] = useState([]);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}projects`)
+    fetch(`${process.env.REACT_APP_API_URL}users`)
       .then((results) => {
         return results.json();
       })
       .then((data) => {
+        console.log("data", data);
         setUserList(data);
       });
   }, []);
@@ -63,11 +63,6 @@ function CarCard({
 
   return (
     <div className="car-card">
-      <div class="standard-text">
-        {userList.map((userData, key) => {
-          return <Profile key={key} userData={userData} />;
-        })}
-      </div>
       <img alt="" src={image} />
 
       <h3>Make: {make}</h3>

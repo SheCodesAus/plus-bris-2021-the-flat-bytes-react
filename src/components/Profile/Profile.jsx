@@ -2,28 +2,39 @@ import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
 import { useNavigate, useParams } from "react-router-dom";
-import DeleteUser from "../DeleteUser/DeleteUser";
 
-const Profile = (props) => {
-  const [userData, setUserData] = useState(props);
+const Profile = () => {
+  const [userData, setUserData] = useState();
   const { id } = useParams();
-
   const navigate = useNavigate();
+
+  const EditAccount = () => {
+    navigate("/edit-account");
+  };
 
   const addCar = () => {
     navigate("/home");
   };
-
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}users/${id}`)
       .then((results) => {
+        console.log("results", results);
         return results.json();
       })
       .then((data) => {
         setUserData(data);
       });
-  }, []);
+  });
 
+  const DeleteUser = async () => {
+    fetch(`${process.env.REACT_APP_API_URL}users/${id}`, {
+      method: "delete",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("token")}`,
+      },
+    });
+    navigate("/");
+  };
   return (
     <div>
       <div>
@@ -50,8 +61,7 @@ const Profile = (props) => {
           <button class="profile-button"> Private Jets </button>
         </div>
         <h3 class="standard-text" style={{ marginTop: "5%" }}>
-          You are currently Logged in as {userData.id}. Delete or Update your
-          account here:
+          You are currently Logged in. Delete or Update your account here:
         </h3>
         <div
           style={{
@@ -63,7 +73,7 @@ const Profile = (props) => {
           <button type="submit" onClick={DeleteUser}>
             Delete Account
           </button>
-          <button type="submit" onClick={UpdateUser}>
+          <button type="submit" onClick={EditAccount}>
             Update Account
           </button>
         </div>
