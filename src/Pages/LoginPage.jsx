@@ -32,10 +32,13 @@ function LoginPage() {
   };
 
   const doLogin = (e) => {
+    console.log("Credentials------", credentials)
     e.preventDefault();
     if (credentials.username && credentials.password) {
       postData().then((response) => {
+
         window.localStorage.setItem("token", response.token);
+        console.log("Response------", response)
         navigate("/home");
       });
     }
