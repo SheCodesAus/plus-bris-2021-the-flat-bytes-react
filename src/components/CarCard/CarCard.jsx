@@ -13,19 +13,18 @@ function CarCard({ image, make, car_model, price, colour, body_type, url }) {
   return (
     <div className="car-card">
       <img alt="" src={image} />
-
-      <h3>Make: {make}</h3>
-      <h3>Model: {car_model}</h3>
-      <h3>Price: $ {price}</h3>
-      <h3>Color: {colour}</h3>
-      <h3>Body Type: {body_type}</h3>
-      <h3>
-        More details here:{" "}
+      <div class="car-details">
+      <ul>
+      <h3>{make} - {car_model}</h3>
+      <li><b>Price</b>$ {price}</li>
+      <li><b>Color</b>{colour}</li>
+      <li><b>Body Type</b>{body_type}</li>
+      </ul>
+      <li><h4>Additional Details:<br /> {" "}
         <a href={url} target="_blank">
           {" "}
-          Car details
-        </a>
-      </h3>
+          Open in new window
+        </a><br /></h4></li></div>
       <div>
         <button type="submit" onClick={saveFavourite}>
           Save Favourite
