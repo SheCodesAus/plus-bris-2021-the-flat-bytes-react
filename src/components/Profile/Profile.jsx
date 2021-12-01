@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 const Profile = () => {
   const [userData, setUserData] = useState();
@@ -25,6 +25,11 @@ const Profile = () => {
         setUserData(data);
       });
   });
+
+  const Logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
 
   const DeleteUser = async () => {
     fetch(`${process.env.REACT_APP_API_URL}users/${id}`, {
@@ -61,7 +66,19 @@ const Profile = () => {
           <button class="profile-button"> Private Jets </button>
         </div>
         <h3 class="standard-text" style={{ marginTop: "5%" }}>
-          You are currently Logged in. Delete or Update your account here:
+          You are currently Logged in. Would you like to{" "}
+          <a
+            class="standard-text"
+            style={{
+              fontWeight: "bold",
+              marginTop: "1%",
+            }}
+            href="#"
+            onClick={Logout}
+          >
+            Logout?
+          </a>
+          Otherwise, Delete or Update your account here:
         </h3>
         <div
           style={{
