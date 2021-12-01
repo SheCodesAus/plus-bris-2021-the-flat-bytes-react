@@ -1,15 +1,28 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DeleteUser from "../DeleteUser/DeleteUser";
 
-const Profile = () => {
+const Profile = (props) => {
+  const [userData, setUserData] = useState(props);
+  const { id } = useParams();
+
   const navigate = useNavigate();
 
   const addCar = () => {
     navigate("/home");
   };
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}users/${id}`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setUserData(data);
+      });
+  }, []);
 
   return (
     <div>
@@ -37,7 +50,8 @@ const Profile = () => {
           <button class="profile-button"> Private Jets </button>
         </div>
         <h3 class="standard-text" style={{ marginTop: "5%" }}>
-          You are currently Logged in. Delete or Update your account here:
+          You are currently Logged in as {userData.id}. Delete or Update your
+          account here:
         </h3>
         <div
           style={{

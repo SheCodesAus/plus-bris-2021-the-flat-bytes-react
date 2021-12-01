@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./CarCard.css";
 import { useNavigate } from "react-router-dom";
+import Profile from "../Profile/Profile";
 
 // Pass a suggested car or "best match" car
-function CarCard({ id, image, make, car_model, price, colour, body_type, url }) {
+function CarCard({
+  id,
+  image,
+  make,
+  car_model,
+  price,
+  colour,
+  body_type,
+  url,
+}) {
   const navigate = useNavigate();
 
   const saveFavourite = async () => {
-    console.log("id: ", id)
+    console.log("id: ", id);
 
     const response = await fetch(
       `${process.env.REACT_APP_API_URL}recommendations/`,
@@ -15,32 +25,49 @@ function CarCard({ id, image, make, car_model, price, colour, body_type, url }) 
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
+          Accept: "application/json",
         },
         // body: JSON.stringify(credentials),
         // above was for the login form
         // below are examples of what might work for this post request
         // body: JSON.stringify(id),
         body: JSON.stringify({
-          product_id: id
+          product_id: id,
         }),
       }
     );
-    console.log("response: ", response)
+    console.log("response: ", response);
     return response.json();
     navigate("/profile");
   };
 
+  const [userList, setUserList] = useState([]);
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}projects`)
+      .then((results) => {
+        return results.json();
+      })
+      .then((data) => {
+        setUserList(data);
+      });
+  }, []);
+
   // then once you have done the GET request on the profile page
   // savedrecommendations.map((recommendation) => {
-    // return (<div>
-    //   <div>car make: {recommendation.make}</div>
-    // blah blah other properties...
-    // </div>)
+  // return (<div>
+  //   <div>car make: {recommendation.make}</div>
+  // blah blah other properties...
+  // </div>)
   // })
 
   return (
     <div className="car-card">
+      <div class="standard-text">
+        {userList.map((userData, key) => {
+          return <Profile key={key} userData={userData} />;
+        })}
+      </div>
       <img alt="" src={image} />
 
       <h3>Make: {make}</h3>

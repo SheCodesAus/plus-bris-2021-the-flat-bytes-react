@@ -10,7 +10,8 @@ import LoginPage from "./Pages/LoginPage";
 import SignUpPage from "./Pages/SignUp";
 import PageNotFound from "./Pages/NotFound";
 import ProfilePage from "./Pages/ProfilePage";
-
+import DeleteUser from "./components/DeleteUser/DeleteUser";
+import UpdateUser from "./components/UpdateUser/UpdateUser";
 
 function App() {
   const [authenticated,setAuthenticated]=useState(true)
@@ -22,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<WelcomePage/>} />
         <Route path="/car-detail" element={<CarDetailPage/>} />
-        <Route path="users/:id"
+        <Route path="users/:id" element={<DeleteUser />} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />

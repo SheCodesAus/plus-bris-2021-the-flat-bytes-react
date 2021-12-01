@@ -4,6 +4,7 @@ import "./Nav.css";
 import IconLogo from "../../assets/Luxe_Icon.png";
 import IconHome from "../../assets/Luxe_Home.png";
 import IconUser from "../../assets/Luxe_User.png";
+import CarCard from "../CarCard/CarCard";
 
 function Nav() {
   return (
@@ -17,7 +18,7 @@ function Nav() {
         <img src={IconLogo} alt="" />
       </ul>
       <ul>
-        <Link to="/profilepage">
+        <Link to={`/profile`}>
           <img src={IconUser} alt="" />
         </Link>
       </ul>
