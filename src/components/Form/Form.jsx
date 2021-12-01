@@ -360,6 +360,7 @@ function Form() {
             purchase
           </h2>
           <CarCard
+            id={suggestedCar.id}
             image={suggestedCar.image}
             make={suggestedCar.make}
             car_model={suggestedCar.car_model}

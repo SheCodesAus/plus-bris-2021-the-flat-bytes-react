@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
 import { useNavigate } from "react-router-dom";
@@ -18,6 +18,10 @@ const Profile = () => {
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
         </h3>
+        {/* {}
+        <div>
+          <CarCard></CarCard>
+        </div> */}
         <button
           onClick={addCar}
           class="container"
