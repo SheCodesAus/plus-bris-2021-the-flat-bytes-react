@@ -13,10 +13,14 @@
   object-fit: cover;
 }
 
-/* .car-details {
+.car-details {
 justify-content: center;
 align-items: center;
-} */
+}
+
+a {
+  color: #ffffff;
+}
 
 ul {
   list-style-type: none;
