@@ -347,10 +347,12 @@ function Form() {
       
       {bestCarMatches.length > 0 &&
         bestCarMatches.map((car) => {
+          // console.log(car.id)
           return (
             <div>
             <h1 class="standard-text">Best Car Matches:</h1>
             <CarCard
+              id={car.id}
               image={car.image}
               make={car.make}
               car_model={car.car_model}

@@ -1,15 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
 import { useNavigate } from "react-router-dom";
 import DeleteUser from "../DeleteUser/DeleteUser";
+import CarCard from "../CarCard/CarCard";
 
 const Profile = () => {
   const navigate = useNavigate();
+  const [savedRecs, setSavedRecs] = useState([]);
 
-  const addCar = () => {
+  
+const addCar = () => {
     navigate("/home");
   };
+
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_API_URL}users`)
+      .then((results) => {
+        console.log("my results", results)
+        return results.json();
+      })
+      .then((data) => {
+        console.log("data", data);
+        setSavedRecs(data);
+      });
+  }, []);
+
+
+
+    // then once you have done the GET request on the profile page
+  // savedrecommendations.map((recommendation) => {
+  // return (<div>
+  //   <div>car make: {recommendation.make}</div>
+  // blah blah other properties...
+  // </div>)
+  // })
 
   return (
     <div>
@@ -18,6 +43,15 @@ const Profile = () => {
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
         </h3>
+      </div>
+      <div className="car-list">
+          {savedRecs.map((owner, key) => {
+            return <CarCard key={key} owner={owner} />
+          })}
+        </div>
+        <div>
+         {/* saved cars to be displayed here */}
+        </div>
         <button
           onClick={addCar}
           class="container"
@@ -50,7 +84,6 @@ const Profile = () => {
           </button>
         </div>
       </div>
-    </div>
   );
 };
 
