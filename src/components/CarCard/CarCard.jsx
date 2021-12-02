@@ -15,11 +15,11 @@ function CarCard({ image, make, car_model, price, colour, body_type, url }) {
       <img alt="" src={image} />
       <div class="car-details">
       <ul>
-      <h3>{make} - {car_model}</h3>
+      <h3>{make} - {car_model}</h3></ul>
       <li><b>Price</b>$ {price}</li>
       <li><b>Color</b>{colour}</li>
       <li><b>Body Type</b>{body_type}</li>
-      </ul>
+      
       <li><h4>Additional Details:<br /> {" "}
         <a href={url} target="_blank">
           {" "}
