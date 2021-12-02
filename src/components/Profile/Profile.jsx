@@ -1,32 +1,47 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams, } from "react-router-dom";
 import DeleteUser from "../DeleteUser/DeleteUser";
 import CarCard from "../CarCard/CarCard";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [savedRecs, setSavedRecs] = useState([]);
+  // const [user, setUser] = useState({
+  //   user_id: id,
+  //   username: "",
+	// 	email: "",
+  //   password: ""
+  // })
+  const [user, setUser] = useState()
+  const [userData, setUserData] = useState()
+   
 
-  
 const addCar = () => {
     navigate("/home");
   };
 
+  const { id } = useParams();
+
+  console.log("User id is", id)
+
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}users`)
-      .then((results) => {
-        console.log("my results", results)
-        return results.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        setSavedRecs(data);
-      });
-  }, []);
+    fetch(`${process.env.REACT_APP_API_URL}users/${id}/`)
+    .then((results) => {
+      console.log("my results", results)
+      return results.json();
+    })
+    .then((data) => {
+      console.log("data", data);
+      setUser(data)
+      //setSavedRecs(data);
+    });
+  }, [id]);
 
+  // const getUserProfile = () => {
 
+  // }
 
     // then once you have done the GET request on the profile page
   // savedrecommendations.map((recommendation) => {
@@ -39,7 +54,8 @@ const addCar = () => {
   return (
     <div>
       <div>
-        <h3 class="standard-text">Welcome to your page.</h3>
+        <h3 class="standard-text">Welcome to your page</h3>
+        {/* <h3>{user.id}</h3> */}
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
         </h3>
