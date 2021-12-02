@@ -14,31 +14,35 @@ function CarCard({
   url,
 }) {
   const navigate = useNavigate();
+  const [favourite, setFavourite] = useState([]);
+  const addToFavourite = id => {
+    if (!favourite.includes(id)) setFavourite(favourite.concat(id));
+    console.log(id);
+  }
 
-  const saveFavourite = async () => {
-    console.log("id: ", id);
+  // const saveFavourite = async () => {
+  //   // console.log("id: ", id);
 
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}recommendations/`,
-      {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        // body: JSON.stringify(credentials),
-        // above was for the login form
-        // below are examples of what might work for this post request
-        // body: JSON.stringify(id),
-        body: JSON.stringify({
-          product_id: id,
-        }),
-      }
-    );
-    console.log("response: ", response);
-    return response.json();
+  //   const response = await fetch(
+  //     `${process.env.REACT_APP_API_URL}recommendations/`,
+  //     {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json",
+  //         Accept: "application/json",
+  //       },
+  //       // body: JSON.stringify(credentials),
+  //       // above was for the login form
+  //       // below are examples of what might work for this post request
+  //       // body: JSON.stringify(id),
+  //       body: JSON.stringify({
+  //         product_id: id,
+  //       }),
+  //     }
+  //   );
+  //   // console.log("response: ", response);
+    // return response.json();
     navigate("/profile");
-  };
+  
 
   const [userList, setUserList] = useState([]);
 
@@ -72,18 +76,18 @@ function CarCard({
       <h3>Body Type: {body_type}</h3>
       <h3>
         More details here:{" "}
-        <a href={url} target="_blank">
+        <a href={url} rel="noreferrer" target="_blank">
           {" "}
           Car details
         </a>
       </h3>
       <div>
-        <button type="submit" onClick={saveFavourite}>
+        <button type="submit" onClick={addToFavourite}>
           Save Favourite
         </button>
       </div>
     </div>
   );
-}
+  }
 
 export default CarCard;
