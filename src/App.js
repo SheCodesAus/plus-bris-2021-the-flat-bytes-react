@@ -18,8 +18,7 @@ function App() {
   <Router>
     <Header />
     <div>
-   {/* <Nav />  #need to place this so it only shows after user login */}
-      <Routes>
+  <Routes>
         <Route path="/" element={<WelcomePage/>} />
         <Route path="/car-detail" element={<CarDetailPage/>} />
         <Route path="/home" element={<HomePage/>} />
@@ -30,9 +29,8 @@ function App() {
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
-   {/* {authenticated && <Nav />} */}
-   
-
+    <p></p><br/>
+    <br/><p></p><br/>
   </Router>
   );
 }
