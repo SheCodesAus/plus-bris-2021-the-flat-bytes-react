@@ -62,22 +62,27 @@ function CarCard({
     <div className="car-card">
       {/* {favourite && <Profile props={saveFavourite} />} */}
       <img alt="" src={image} />
+      <div class="car-details">
 
-      <h3>Make: {make}</h3>
-      <h3>Model: {car_model}</h3>
-      <h3>Price: $ {price}</h3>
-      <h3>Color: {colour}</h3>
-      <h3>Body Type: {body_type}</h3>
-      <h3>
-        More details here:{" "}
-        <a href={url} rel="noreferrer" target="_blank">
+     <ul><h3>{make} - {car_model}</h3></ul>
+      <ul>
+      <li><b>Price</b>$ {price}</li>
+      <li><b>Color</b>{colour}</li>
+      <li><b>Body Type</b>{body_type}</li>
+      
+      <li><b>Additional Details:</b>{" "}
+         <a href={url} rel="noreferrer" target="_blank">
+
           {" "}
-          Car details
-        </a>
-      </h3>
+          Open in new window
+        </a><br /></li></ul>
+        
+        </div>
       <div>
+
       <div>
           <button type="submit" onClick={handleSumbit}>
+
           Save Favourite
           </button>
         </div>

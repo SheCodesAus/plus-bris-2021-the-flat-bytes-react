@@ -27,7 +27,9 @@ function Nav(props) {
         <img src={IconLogo} alt="" />
       </ul>
       <ul>
+
         <Link to={`/profile/${id}`}>
+
           <img src={IconUser} alt="" />
         </Link>
       </ul>

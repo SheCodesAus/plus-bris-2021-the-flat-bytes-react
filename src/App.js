@@ -19,8 +19,9 @@ function App() {
   <Router>
     <Header />
     <div>
+
     <Nav className="menu" />
-      <Routes>
+     <Routes>
 
         <Route path="/" element={<WelcomePage/>} />
         <Route path="/car-detail" element={<CarDetailPage/>} />
@@ -33,9 +34,8 @@ function App() {
       </Routes>
     
     </div>
-   {/* {authenticated && <Nav />} */}
-   
-
+    <p></p><br/>
+    <br/><p></p><br/>
   </Router>
   );
 }
