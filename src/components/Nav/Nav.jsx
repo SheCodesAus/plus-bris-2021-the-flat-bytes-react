@@ -1,11 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, useParams, BrowserRouter as Router,
+  Switch, Route } from "react-router-dom";
 import "./Nav.css";
+// import Profile from "../Profile/Profile";
 import IconLogo from "../../assets/Luxe_Icon.png";
 import IconHome from "../../assets/Luxe_Home.png";
 import IconUser from "../../assets/Luxe_User.png";
 
-function Nav() {
+function Nav(props) {
+  const { id } = useParams();
+  const [userData, setUserData] = useState({
+    id: "",
+    email: "",
+    username: ""
+  });
+  // const match = useRouteMatch("/profile/:id")
+
   return (
     <nav class="nav_component">
       <ul>
@@ -17,7 +27,9 @@ function Nav() {
         <img src={IconLogo} alt="" />
       </ul>
       <ul>
-        <Link to="/profile">
+
+        <Link to={`/profile/${id}`}>
+
           <img src={IconUser} alt="" />
         </Link>
       </ul>
@@ -25,4 +37,5 @@ function Nav() {
   );
 }
 
+// <Route path="profile/*" element={<Profile/>} />
 export default Nav;
