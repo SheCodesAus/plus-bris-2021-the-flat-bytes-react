@@ -12,3 +12,7 @@ button.profile-button:active {
   border-color: #090909;
   cursor: pointer;
 }
+
+.logout-button {
+  margin: 5%;
+}

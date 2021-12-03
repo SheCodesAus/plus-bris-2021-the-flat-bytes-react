@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./Profile.css";
 import UpdateUser from "../UpdateUser/UpdateUser";
-import { useNavigate, useParams, } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DeleteUser from "../DeleteUser/DeleteUser";
 import CarCard from "../CarCard/CarCard";
 
 const Profile = (props) => {
-  const token = window.localStorage.getItem("token");
+  const [token, setToken] = useState(localStorage.getItem('token'))
 
   const { id } = useParams();
+  const navigate = useNavigate()
   const [userData, setUserData] = useState({
     id: {id},
     email: "",
     username: ""
   });
+  const doLogout = () => {
+    localStorage.setItem('token', null)
+    navigate('/')
+    setToken(null)
+  }
 
   console.log ("User id", id)
 
@@ -31,6 +37,8 @@ const Profile = (props) => {
     
 }, [id]);
 console.log ("User id", id)
+
+  
   return (
     <div>
       <div>
@@ -65,7 +73,10 @@ console.log ("User id", id)
           <button class="profile-button"> Private Jets </button>
         </div>
         <h3 class="standard-text" style={{ marginTop: "5%" }}>
-          You are currently Logged in. Delete or Update your account here:
+          You are currently Logged in. <br/>
+        
+          <button className="logout-button" onClick={doLogout}>Logout</button> <br/>
+          Delete or Update your account here:
         </h3>
         <div
           style={{
