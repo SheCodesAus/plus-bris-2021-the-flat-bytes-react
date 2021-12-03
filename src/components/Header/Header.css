@@ -1,76 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap');
-/* .header {
-    position: relative;
-} */
+
+#headerlogo {
+    display: block;
+    max-width:20vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .neon {
-    /* font-size: 2em; */
-    /* text-align:center; */
+    text-align:center;
     font-family: 'Open Sans', sans-serif;
     font-weight: bold;
+    font-size: 2em;
     color: #ffffff;
     text-shadow:
       0 0 5px #ffffff,
       0 0 10px #fff,
       0 0 20px #fff,
-      0 0 40px #fbbf64,
-      0 0 80px #fbbf64,
-      0 0 90px #fbbf64,
-      0 0 100px #fbbf64,
-      0 0 150px #fbbf64;
-  }
-
-/* small devices/default */
-@media only screen and (max-width: 767px) {
-    #header{
-        text-align: center;
-    }
-    #headerlogo {
-        max-width:20vh;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .neon {
-        font-size: 2em;
-        }
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    #header{
-        text-align: center;
-    }
-    #headerlogo {
-        max-width:20vh;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    .neon {
-        font-size: 2em;
-    }
-}
-  
-  /* Large devices (laptops/desktops, 992px and up */
-  @media only screen and (min-width: 992px) {
-    .header{
-        /* display: flex; */
-        text-align: center;
-        /* justify-content: space-between; */
-        /* align-content: center; */
-    }
-
-    #headerlogo {
-        width:10vw;       
-    } 
-    ul {
-        padding: 0px;
-        list-style-type: none;
-    }
+      0 0 40px #ffbd59,
+      0 0 80px #ffbd59,
+      0 0 90px #ffbd59,
+      0 0 100px #ffbd59,
+      0 0 150px #ffbd59;
   }
   
-  /* extra-large devices (large laptops and desktops, 1200px and up) */
-  /* @media only screen and (min-width: 1200px) {
-
-  }
-   */

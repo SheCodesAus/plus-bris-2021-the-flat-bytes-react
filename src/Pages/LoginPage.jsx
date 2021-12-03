@@ -1,12 +1,11 @@
 import { React, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { id } = useParams();
   const [credentials, setCredentials] = useState({
     username: "",
-    password: ""
+    password: "",
   });
 
   const handleChange = (e) => {
@@ -24,7 +23,6 @@ function LoginPage() {
         method: "post",
         headers: {
           "Content-Type": "application/json",
-          "Accept": "application/json",
         },
         body: JSON.stringify(credentials),
       }

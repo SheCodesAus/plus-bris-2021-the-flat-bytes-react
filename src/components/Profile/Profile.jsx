@@ -1,57 +1,54 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Profile.css";
-import UpdateUser from "../UpdateUser/UpdateUser";
-import { useNavigate, useParams, } from "react-router-dom";
-import DeleteUser from "../DeleteUser/DeleteUser";
-import CarCard from "../CarCard/CarCard";
+import Form from "../Form/Form";
+import { useNavigate } from "react-router-dom";
 
-const Profile = (props) => {
-  const token = window.localStorage.getItem("token");
+const initialPreferences = [];
 
-  const { id } = useParams();
-  const [userData, setUserData] = useState({
-    id: {id},
-    email: "",
-    username: ""
-  });
+const Profile = () => {
+  const [Preferences, setPreferences] = React.useState(initialPreferences);
+  const [name, setName] = React.useState("");
+  const navigate = useNavigate();
 
-  console.log ("User id", id)
+  const addCar = () => {
+    navigate("/home");
+  };
 
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}users/${id}/`)
-    .then((results) => {
-      console.log ("User id2", id)
-        return results.json();
-    })
-    .then((data) => {
-      console.log ("User id3", id)
-        setUserData(data);
-        console.log("This is user data", data)
-    });
-    
-}, [id]);
-console.log ("User id", id)
+  function handleChange(event) {
+    setName(event.target.value);
+  }
+
+  function handleAdd() {
+    const updatedPreferences = Preferences.concat({ name });
+
+    setPreferences(updatedPreferences);
+  }
+
   return (
     <div>
       <div>
-        <h3 class="standard-text">Welcome to your page</h3>
-        <h3 class="standard-text">Your username is: {userData.username}</h3>
-        <h3 class="standard-text">Your email is: {userData.email}</h3>
-        
+        {/* <input type="text" value={name} onChange={handleChange} />
+          {/* <button type="button" onClick={handleAdd}>
+            Add
+          </button> */}
+        {/* <div>{Preferences}</div> */}
+        {/* </div>
+      </div>
+      <ul>
+        {Preferences.map((item) => (
+          <li key={item.id}>{item.name}</li>
+        ))}
+      </ul>
+      ); */}
+        <div id="img-div">
+          <img id="banner" src={"../Luxe-logo-banner.png"} alt="" />
+        </div>
+        <h3 class="standard-text">Welcome to your page.</h3>
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
         </h3>
-      </div>
-      {/* <div className="car-list">
-          {savedRecs.map((owner, key) => {
-            return <CarCard key={key} owner={owner}/>
-          })}
-        </div> */}
-        <div>
-         {/* saved cars to be displayed here */}
-        </div>
         <button
-          // onClick={addCar}
+          onClick={addCar}
           class="container"
           style={{ marginBottom: "2%" }}
         >
@@ -64,24 +61,8 @@ console.log ("User id", id)
           <button class="profile-button"> Yachts </button>
           <button class="profile-button"> Private Jets </button>
         </div>
-        <h3 class="standard-text" style={{ marginTop: "5%" }}>
-          You are currently Logged in. Delete or Update your account here:
-        </h3>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginBottom: "5%",
-          }}
-        >
-          <button type="submit" onClick={DeleteUser}>
-            Delete Account
-          </button>
-          <button type="submit" onClick={UpdateUser}>
-            Update Account
-          </button>
-        </div>
       </div>
+    </div>
   );
 };
 
