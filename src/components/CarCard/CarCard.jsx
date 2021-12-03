@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./CarCard.css";
 import { useNavigate } from "react-router-dom";
 
+import Profile from "../Profile/Profile.jsx";
+
 // Pass a suggested car or "best match" car
 function CarCard({
   id,
@@ -49,25 +51,16 @@ function CarCard({
         }),
       }
     );
-    navigate("/profile");
+    //navigate("/profile");
+    setFavourite(response);
+    console.log("This is setFavourite", setFavourite)
     return response.json();
     
   };
 
-  const [userList, setUserList] = useState([]);
-  useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}users`)
-      .then((results) => {
-        return results.json();
-      })
-      .then((data) => {
-        console.log("data", data);
-        setUserList(data);
-      });
-  }, []);
-
   return (
     <div className="car-card">
+      {/* {favourite && <Profile props={saveFavourite} />} */}
       <img alt="" src={image} />
 
       <h3>Make: {make}</h3>
@@ -83,16 +76,11 @@ function CarCard({
         </a>
       </h3>
       <div>
-      {/* if car is saved, display this button */}
-      {/* {/* { !window.localStorage.getItem("reco") || window.localStorage.getItem("reco")!== id
-      //  */}
       <div>
           <button type="submit" onClick={handleSumbit}>
           Save Favourite
           </button>
         </div>
-      {/* :<div>Saved to Favourites</div>
-      }    */}
       </div>
       
     </div>

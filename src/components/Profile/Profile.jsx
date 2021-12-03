@@ -5,71 +5,51 @@ import { useNavigate, useParams, } from "react-router-dom";
 import DeleteUser from "../DeleteUser/DeleteUser";
 import CarCard from "../CarCard/CarCard";
 
-const Profile = () => {
-  const navigate = useNavigate();
-  const [savedRecs, setSavedRecs] = useState([]);
-  // const [user, setUser] = useState({
-  //   user_id: id,
-  //   username: "",
-	// 	email: "",
-  //   password: ""
-  // })
-  const [user, setUser] = useState()
-  const [userData, setUserData] = useState()
-   
-
-const addCar = () => {
-    navigate("/home");
-  };
-
-  const { id } = useParams();
-
-  console.log("User id is", id)
+const Profile = (props) => {
+  const token = window.localStorage.getItem("token");
+  const [userData, setUserData] = useState({
+    // "id": id,
+    // "email": "",
+    // username: ""
+  });
+  const { id: user_id } = useParams();
+  console.log ("User id", user_id)
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}users/${id}/`)
+    fetch(`${process.env.REACT_APP_API_URL}users/${user_id}/`)
     .then((results) => {
-      console.log("my results", results)
-      return results.json();
+      console.log ("User id2", user_id)
+        return results.json();
     })
     .then((data) => {
-      console.log("data", data);
-      setUser(data)
-      //setSavedRecs(data);
+      console.log ("User id3", user_id)
+        setUserData(data);
+        console.log("This is user data", data)
     });
-  }, [id]);
-
-  // const getUserProfile = () => {
-
-  // }
-
-    // then once you have done the GET request on the profile page
-  // savedrecommendations.map((recommendation) => {
-  // return (<div>
-  //   <div>car make: {recommendation.make}</div>
-  // blah blah other properties...
-  // </div>)
-  // })
+    
+}, [user_id]);
 
   return (
     <div>
       <div>
         <h3 class="standard-text">Welcome to your page</h3>
-        {/* <h3>{user.id}</h3> */}
+        <h3 class="standard-text">Your username is: {userData.username}</h3>
+        <h3 class="standard-text">Your email is: {userData.email}</h3>
+        
         <h3 class="standard-text">
           These are your favourites from our selection tailored just for you...
         </h3>
       </div>
-      <div className="car-list">
+      {/* <div className="car-list">
           {savedRecs.map((owner, key) => {
-            return <CarCard key={key} owner={owner} />
+            return <CarCard key={key} owner={owner}/>
           })}
-        </div>
+        </div> */}
         <div>
          {/* saved cars to be displayed here */}
         </div>
         <button
-          onClick={addCar}
+          // onClick={addCar}
           class="container"
           style={{ marginBottom: "2%" }}
         >
