@@ -34,7 +34,6 @@ function ProfilePage() {
             return (
               <div className="car-list">
                <li class="standard-text">id: {rec.id}</li>
-               <li class="standard-text">owner: {rec.owner}</li>
                <li class="standard-text">product_id: {rec.product_id}</li>
             </div>
             )

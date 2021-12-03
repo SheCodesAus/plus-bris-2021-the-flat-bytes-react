@@ -81,7 +81,6 @@ function Form() {
       },
     ];
     const answersMood = ["happy", "sad", "tired", "cheerful"];
-
     if (mood === answersMood[0]) {
       console.log(
         "Your answer is",
@@ -92,7 +91,7 @@ function Form() {
       setSuggestedCar(moodOptions[0]);
       setFormFilled(true);
     }
-    if (e.target.value === answersMood[1]) {
+    if (mood === answersMood[1]) {
       console.log(
         "Your answer is",
         answersMood[1],
@@ -102,7 +101,7 @@ function Form() {
       setSuggestedCar(moodOptions[1]);
       setFormFilled(true);
     }
-    if (e.target.value === answersMood[2]) {
+    if (mood === answersMood[2]) {
       console.log(
         "Your answer is",
         answersMood[2],
@@ -112,7 +111,7 @@ function Form() {
       setSuggestedCar(moodOptions[2]);
       setFormFilled(true);
     }
-    if (e.target.value === answersMood[3]) {
+    if (mood === answersMood[3]) {
       console.log(
         "Your answer is",
         answersMood[3],
@@ -219,7 +218,6 @@ function Form() {
     });
   }
 
-
   //submit the form
   function handleSubmit(e) {
     e.preventDefault();
@@ -227,7 +225,6 @@ function Form() {
     handleMoodQuestion();
     console.log("This is handle mood question from submit", handleMoodQuestion);
     setFormFilled(true);
-
     return result;
   }
 
@@ -256,6 +253,7 @@ function Form() {
         <div>
           <h1 class="standard-text">Best Car Matches:</h1>
           <CarCard
+            id={car.id}
             image={car.image}
             make={car.make}
             car_model={car.car_model}
@@ -271,6 +269,7 @@ function Form() {
               purchase
             </h2>
             <CarCard
+              id={suggestedCar.id}
               image={suggestedCar.image}
               make={suggestedCar.make}
               car_model={suggestedCar.car_model}
@@ -311,7 +310,6 @@ function Form() {
             </label>
             <select onClick={getUserPreferences} id="price" name="price">
               <option disabled selected value=""></option>
-
               <option value="50.0-429.0">$50.000-430.000</option>
               <option value="431.0-620.0">$450.000-620.000</option>
               <option value="621.0-999.0">$620.000-999.000</option>
@@ -346,10 +344,9 @@ function Form() {
               <option value="coupe">Coupe</option>
               <option value="sedan">Sedan</option>
               <option value="convertible">Convertible</option>
-              <option value="suv">Suv</option>
+              <option value="SUV">SUV</option>
             </select>
           </div>
-
           <div class="container select-container">
             <label class="form-input standard-text">
               How are you feeling today?
