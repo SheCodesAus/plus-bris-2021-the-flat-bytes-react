@@ -7,28 +7,30 @@ import CarCard from "../CarCard/CarCard";
 
 const Profile = (props) => {
   const token = window.localStorage.getItem("token");
+
+  const { id } = useParams();
   const [userData, setUserData] = useState({
-    // "id": id,
-    // "email": "",
-    // username: ""
+    id: 34,
+    email: "",
+    username: ""
   });
-  const { id: user_id } = useParams();
-  console.log ("User id", user_id)
+
+  console.log ("User id", id)
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}users/${user_id}/`)
+    fetch(`${process.env.REACT_APP_API_URL}users/${id}/`)
     .then((results) => {
-      console.log ("User id2", user_id)
+      console.log ("User id2", id)
         return results.json();
     })
     .then((data) => {
-      console.log ("User id3", user_id)
+      console.log ("User id3", id)
         setUserData(data);
         console.log("This is user data", data)
     });
     
-}, [user_id]);
-
+}, [id]);
+console.log ("User id", id)
   return (
     <div>
       <div>
