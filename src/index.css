@@ -3,4 +3,5 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #090909;
+  padding-bottom: 8%;
 }
