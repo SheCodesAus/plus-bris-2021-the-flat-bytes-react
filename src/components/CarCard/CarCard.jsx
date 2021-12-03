@@ -28,6 +28,7 @@ function CarCard({
     saveFavourite()
       .then((response) => { 
       setFavourite(response)
+      navigate("/profile/34")
       // const reco = localStorage.setItem("reco", id)
       console.log("response :", response)
     }
