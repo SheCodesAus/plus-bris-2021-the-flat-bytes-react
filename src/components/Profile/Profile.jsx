@@ -10,7 +10,7 @@ const Profile = (props) => {
 
   const { id } = useParams();
   const [userData, setUserData] = useState({
-    id: 34,
+    id: {id},
     email: "",
     username: ""
   });

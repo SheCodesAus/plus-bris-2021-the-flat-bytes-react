@@ -13,17 +13,15 @@ import ProfilePage from "./Pages/ProfilePage";
 
 
 function App() {
-  const [authenticated,setAuthenticated]=useState(true)
-  const { id } = useParams();
+
   return (
     
   <Router>
     <Header />
     <div>
-   {/* <Nav />  #need to place this so it only shows after user login */}
-   
+    <Nav className="menu" />
       <Routes>
-      
+
         <Route path="/" element={<WelcomePage/>} />
         <Route path="/car-detail" element={<CarDetailPage/>} />
         <Route path="/home" element={<HomePage/>} />
