@@ -66,7 +66,7 @@ function CarCard({
 
      <ul><h3>{make} - {car_model}</h3></ul>
       <ul>
-      <li><b>Price</b>$ {price}</li>
+      <li><b>Price</b>$ {price}.000</li>
       <li><b>Color</b>{colour}</li>
       <li><b>Body Type</b>{body_type}</li>
       
