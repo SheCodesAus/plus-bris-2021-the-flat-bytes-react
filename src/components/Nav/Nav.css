@@ -1,7 +1,15 @@
 .nav_component {
     background-color: #090909;
     width: 100%;
+    position: fixed;
     bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.nav_component img {
+    width: 30%;
 }
 
 ul {
@@ -9,58 +17,6 @@ ul {
     padding: 14px 16px;
     text-align: center;
     min-width: 20vw;
+    /* float: center; */
 }
 
-/* small devices/default */
-@media only screen and (max-width: 767px) {
-    .nav_component { 
-    display: flex;
-    position: fixed;
-    background-color: #090909;
-    bottom: 0;
-    justify-content: space-between;
-    align-content: center;
-    }
-    .nav_component img {
-    width: 30%;
-    }
-}
-  
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-    .nav_component img {
-        max-width: 5vw;
-    }
-}
-
-@media only screen and (max-width: 992px) {
-    .nav_component { 
-        display: flex;
-        position: fixed;
-        bottom: 0;
-        justify-content: space-between;
-        align-content: center;
-        max-height: 20vw;
-        }
-        
-     .nav_component img {
-        max-width: 5vw;
-        }   
-}
-
-
-  
-/* navigation img hidden, text nav only */
-  /* Large devices (laptops/desktops, 992px and up */
-  @media only screen and (min-width: 992px) {
-    .nav_component { 
-    float:right;
-    top:0px;
-    }
-
-    .nav_component img {
-    display: none;
-    }
-
-  }

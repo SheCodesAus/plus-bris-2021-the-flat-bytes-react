@@ -19,8 +19,8 @@ function Form() {
   const navigate = useNavigate();
   const [mood, setMood] = useState("");
   const [bestCarMatches, setBestCarMatches] = useState([]);
+  const [carsFromAPI, setCarsFromApi] = useState([]);
   const [carsOptions, setCarsOptions] = useState([]);
-  const [formFilled, setFormFilled] = useState(undefined);
 
   //show a recommendation based on the mood
 
@@ -28,7 +28,7 @@ function Form() {
     const moodOptions = [
       {
         make: "Ferrari",
-        car_model: "GTC4Lusso",
+        model: "GTC4Lusso",
         price: 575.0,
         engine: "6.3-litre V12",
         body_type: "coupe",
@@ -42,7 +42,7 @@ function Form() {
 
       {
         make: "Bentley",
-        car_model: "Mulsanne Speed",
+        model: "Mulsanne Speed",
         price: 455.5,
         engine: "6.8-litre Twin Turbo V8",
         body_type: "sedan",
@@ -55,7 +55,7 @@ function Form() {
       },
       {
         make: "Rolls-Royce",
-        car_model: "Ghost",
+        model: "Ghost",
         price: 755.0,
         engine: "6.7-litre V12",
         colour: "gray",
@@ -68,7 +68,7 @@ function Form() {
       },
       {
         make: "Porsche",
-        car_model: "911 GT2 RS",
+        model: "911 GT2 RS",
         price: 645.4,
         engine: "3.8 -litre twin-turbocharged flat-6",
         body_type: "coupe",
@@ -81,8 +81,7 @@ function Form() {
       },
     ];
     const answersMood = ["happy", "sad", "tired", "cheerful"];
-
-    if (mood === answersMood[0]) {
+    if (e.target.value === answersMood[0]) {
       console.log(
         "Your answer is",
         answersMood[0],
@@ -90,7 +89,6 @@ function Form() {
         moodOptions[0]
       );
       setSuggestedCar(moodOptions[0]);
-      setFormFilled(true);
     }
     if (e.target.value === answersMood[1]) {
       console.log(
@@ -100,7 +98,6 @@ function Form() {
         moodOptions[1]
       );
       setSuggestedCar(moodOptions[1]);
-      setFormFilled(true);
     }
     if (e.target.value === answersMood[2]) {
       console.log(
@@ -110,7 +107,6 @@ function Form() {
         moodOptions[2]
       );
       setSuggestedCar(moodOptions[2]);
-      setFormFilled(true);
     }
     if (e.target.value === answersMood[3]) {
       console.log(
@@ -120,7 +116,6 @@ function Form() {
         carsOptions[3]
       );
       setSuggestedCar(moodOptions[3]);
-      setFormFilled(true);
     }
   };
 
@@ -138,6 +133,7 @@ function Form() {
     fetch(`${process.env.REACT_APP_API_URL}products/`)
       .then((results) => {
         console.log("results:", results);
+
         return results.json();
       })
       .then((data) => {
@@ -148,7 +144,8 @@ function Form() {
 
   //filter based on attributes
   const matchingCars = (e) => {
-    //pass response from api
+    //filter by price
+    //pass my response from api
     let filteredCars = matchingPrice(carsOptions);
     console.log("the suggested cARS", suggestedCar);
 
@@ -163,6 +160,10 @@ function Form() {
       console.log("By body", filteredCars);
     }
 
+    if (suggestedCar.fuel !== "") {
+      filteredCars = matchingFuel(filteredCars);
+      console.log("By fuel", filteredCars);
+    }
     console.log("The filtered cars", filteredCars);
     setBestCarMatches(filteredCars);
     return filteredCars;
@@ -219,81 +220,25 @@ function Form() {
     });
   }
 
+  function matchingFuel(cars) {
+    return cars.filter((car) => {
+      if (car.fuel !== suggestedCar.fuel) {
+        return false;
+      }
+      return true;
+    });
+  }
 
   //submit the form
   function handleSubmit(e) {
     e.preventDefault();
     const result = matchingCars(e);
-    handleMoodQuestion();
-    console.log("This is handle mood question from submit", handleMoodQuestion);
-    setFormFilled(true);
 
+    //setbestCarMatches(result)
     return result;
   }
 
-  if (!bestCarMatches.length && formFilled) {
-    return (
-      <div>
-        <p class="standard-text">
-          There are no suitable cars for you at the moment. Try searching again
-        </p>
-        <div class="submit-container container">
-          <button
-            onClick={(e) => {
-              setFormFilled(false);
-            }}
-          >
-            Try again
-          </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (bestCarMatches.length > 0 && mood && formFilled) {
-    return bestCarMatches.map((car) => {
-      return (
-        <div>
-          <h1 class="standard-text">Best Car Matches:</h1>
-          <CarCard
-            image={car.image}
-            make={car.make}
-            car_model={car.car_model}
-            price={car.price}
-            colour={car.colour}
-            body_type={car.body_type}
-            url={car.url}
-          />
-
-          <div>
-            <h2 class="standard-text">
-              Based on your preferences and our smart analytics tool you should
-              purchase
-            </h2>
-            <CarCard
-              image={suggestedCar.image}
-              make={suggestedCar.make}
-              car_model={suggestedCar.car_model}
-              price={suggestedCar.price}
-              colour={suggestedCar.colour}
-              body_type={suggestedCar.body_type}
-              url={suggestedCar.url}
-            />
-          </div>
-
-          <div class="submit-container container">
-            <button
-              onClick={(e) => {
-                setFormFilled(false);
-              }}
-            >
-              Search again
-            </button>
-          </div>
-        </div>
-      );
-    });
-  }
+  // console.log("cars options", carsOptions);
 
   return (
     <div id="form-page">
@@ -311,8 +256,7 @@ function Form() {
             </label>
             <select onClick={getUserPreferences} id="price" name="price">
               <option disabled selected value=""></option>
-
-              <option value="50.0-429.0">$50.000-430.000</option>
+              <option value="50.0-429.0">$50.0-430.000</option>
               <option value="431.0-620.0">$450.000-620.000</option>
               <option value="621.0-999.0">$620.000-999.000</option>
             </select>
@@ -323,13 +267,13 @@ function Form() {
             </label>
             <select onChange={getUserPreferences} id="colour" name="colour">
               <option disabled selected value=""></option>
-              <option value="Black">Black</option>
-              <option value="White">White</option>
-              <option value="Blue">Blue</option>
-              <option value="Red">Red</option>
-              <option value="Yellow">Yellow</option>
-              <option value="Green">Green</option>
-              <option value="Gray">Gray</option>
+              <option value="Black">black</option>
+              <option value="White">white</option>
+              <option value="Blue">blue</option>
+              <option value="Red">red</option>
+              <option value="Yellow">yellow</option>
+              <option value="Green">green</option>
+              <option value="Gray">gray</option>
             </select>
           </div>
 
@@ -351,12 +295,22 @@ function Form() {
           </div>
 
           <div class="container select-container">
+            <label class="form-input standard-text">Do you love nature?</label>
+            <select onChange={getUserPreferences} id="fuel" name="fuel">
+              <option disabled selected value=""></option>
+              <option value="electrical">Yes, of course</option>
+              <option value="petrol">Not really</option>
+            </select>
+          </div>
+
+          <div class="container select-container">
             <label class="form-input standard-text">
               How are you feeling today?
             </label>
             <select
               value={mood}
               onChange={(e) => setMood(e.target.value)}
+              onClick={handleMoodQuestion}
               id="mood"
               name="mood"
             >
@@ -380,6 +334,42 @@ function Form() {
           </div>
         </form>
       </div>
+      <h1 class="standard-text">Best Car Matches:</h1>
+      {!bestCarMatches.length && (
+        <p class="standard-text">No car matches found.</p>
+      )}
+      {bestCarMatches.length > 0 &&
+        bestCarMatches.map((car) => {
+          return (
+            <CarCard
+              image={car.image}
+              make={car.make}
+              car_model={car.car_model}
+              price={car.price}
+              colour={car.colour}
+              body_type={car.body_type}
+              url={car.url}
+            />
+          );
+        })}
+
+      {mood && (
+        <div>
+          <h2 class="standard-text">
+            Based on your preferences and our smart analytics tool you should
+            purchase
+          </h2>
+          <CarCard
+            image={suggestedCar.image}
+            make={suggestedCar.make}
+            car_model={suggestedCar.car_model}
+            price={suggestedCar.price}
+            colour={suggestedCar.colour}
+            body_type={suggestedCar.body_type}
+            url={suggestedCar.url}
+          />
+        </div>
+      )}
     </div>
   );
 }
